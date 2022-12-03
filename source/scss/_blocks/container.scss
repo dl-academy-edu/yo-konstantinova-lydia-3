@@ -1,0 +1,10 @@
+.container {
+  margin: 0 auto;
+  max-width: 70%;
+  @media screen and (min-width: $media-tablet) and (max-width: $media-tablet-landscape) {
+    max-width: 84%;
+  }
+  @media screen and (max-width: 767px) {
+    max-width: 87.5%;
+  }
+}
