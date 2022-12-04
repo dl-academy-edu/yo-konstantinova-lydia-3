@@ -17,8 +17,112 @@
 */
 @import "_blocks/container";
 @import "_blocks/footer";
+@import "_blocks/header";
 
-// .container {
-//    margin: 0 auto;
-//    max-width: 70%;
-// }
+// Fonts
+
+@font-face {
+  font-family: "Gilroy", "Arial", sans-serif;
+  src: url(/fonts/gilroy-regular.woff) format(woff),
+       url(/source/fonts/gilroy-regular.woff2) format(woff2);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Gilroy", "Arial", sans-serif;
+  src: url(/fonts/gilroy-medium.woff) format(woff),
+       url(/source/fonts/gilroy-medium.woff2) format(woff2);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Gilroy", "Arial", sans-serif;
+  src: url(/fonts/gilroy-bold.woff) format(woff),
+       url(/source/fonts/gilroy-bold.woff2) format(woff2);
+  font-weight: 700;
+}
+
+// index styles
+
+.heading-section{
+  &__desc {
+    display: flex;
+    column-gap: 40px;
+    align-items: flex-end;
+    width: 53%;
+    margin-top: 40px;
+    margin-bottom: 36px;
+    &>h1 {
+      font-size: 47px;
+      line-height: 57px;
+    }
+  }
+  &__photo {
+    width: 100%;
+  }
+  &__slider__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    &__arrow {
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 42px;
+      height: 42px;
+      border: none;
+      background-color: transparent;
+    }
+    &__list {
+      display: flex;
+      column-gap: 7px;
+    }
+  }
+}
+
+.heading-section__slider__controls {
+  &__arrow {
+    &--left {
+      background-image: url(/img/icons/arrow_left.svg);
+    }
+    &--right {
+      background-image: url(/img/icons/arrow_right.svg);
+    }
+  }
+  &__list__list-item > button {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+  }
+  &__list__list-item{
+    &--active > button {
+    background-color: #070707;
+    }
+    &--disabled > button {
+      background-color: #E5E5E5;
+    }
+  }
+}
+
+.about-me {
+  background-color: #F6F6F6;
+  padding: 60px 431px;
+  &__quote {
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-bottom: 60px;
+    max-width: 448px;
+    padding-top: 5px;
+    &--right {
+      background-image: url(/img/icons/quote_right.svg);
+    }
+    &--left {
+      background-image: url(/img/icons/quote_left.svg);
+    }
+  }
+  &__title {
+    text-align: center;
+  }
+}

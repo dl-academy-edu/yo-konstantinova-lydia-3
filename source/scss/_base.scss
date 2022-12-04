@@ -24,4 +24,17 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Gilroy", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+  color: #070707;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+h2 {
+  font-size: 34px;
+  line-height: 41px;
 }

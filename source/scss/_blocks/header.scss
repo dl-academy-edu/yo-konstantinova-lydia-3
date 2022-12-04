@@ -1,0 +1,27 @@
+.header {
+    padding-top: 32px;
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 32px;
+        &__list {
+            display: flex;
+            column-gap: 20px;
+            &__list-item>a {
+                color: #828282;
+                font-weight: 700;
+            }
+        }
+        &>a {
+            color: #070707;
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 700;
+        }
+    }
+    &__line{
+        background-color: #828282;
+        height: 1px;
+        border: none;
+    }
+}

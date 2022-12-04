@@ -22,8 +22,8 @@
     <!-- endbuild -->
   </head>
   <body>
+    @@include('blocks/header.html')
     <main>
-      @@include('blocks/header.html')
       <section class="heading-section container">
         <div class="heading-section__desc">
           <h1>Antonina Antoninovna</h1>
@@ -36,7 +36,7 @@
                 <source media="(max-width:1023px)"
                         srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x"
                         alt="Photo of Antonina">
-                <img src="/img/images/antonina.jpg" alt="Photo of Antonina">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
               </picture>
             </li>
             <li class="heading-section__slider__list__list-item">
@@ -50,30 +50,30 @@
             </li>
           </ul>
           <div class="heading-section__slider__controls">
-            <button type="button"></button>
-            <ul>
-              <li>
+            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--left"></button>
+            <ul class="heading-section__slider__controls__list">
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--active">
                 <button type="button"></button>
               </li>
-              <li>
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
                 <button type="button"></button>
               </li>
-              <li>
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
                 <button type="button"></button>
               </li>
-              <li>
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
                 <button type="button"></button>
               </li>
             </ul>
-            <button type="button"></button>
+            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--right"></button>
           </div>
         </div>
       </section>
       <section class="about-me">
-        <h2>About me</h2>
-        <p>Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</p>
-        <p>Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</p>
-        <p>Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </p>
+        <h2 class="about-me__title">About me</h2>
+        <p class="about-me__quote about-me__quote--right">Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</p>
+        <p class="about-me__quote about-me__quote--left">Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</p>
+        <p class="about-me__quote about-me__quote--right">Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </p>
       </section>
       <section class="skills">
         <h2>Skills</h2>
