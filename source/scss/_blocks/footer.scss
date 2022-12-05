@@ -1,3 +1,49 @@
 .footer {
   text-align: center;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__text {
+    display: inline-block;
+    max-width: 269px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  &__btn {
+    color: #fff;
+    font-weight: 700;
+    background-color: #070707;
+    border: none;
+    padding: 10px 29px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    cursor: pointer;
+  }
+  &__socials-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 350px;
+    margin-bottom: 40px;
+    &__list-item > a{
+      color: #070707;
+      font-weight: 700;
+      display: inline-block;
+      border: 2.5px solid #070707;
+      border-radius: 30px;
+      padding: 10px 19px;
+    }
+  }
+  &__design-by, &__code-by, .dashed-underline {
+    color: #828282;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 5px;
+  }
+}
+
+.dashed-underline {
+  text-decoration: underline dashed;
 }

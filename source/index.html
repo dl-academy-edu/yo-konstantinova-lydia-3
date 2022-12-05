@@ -71,56 +71,67 @@
       </section>
       <section class="about-me">
         <h2 class="about-me__title">About me</h2>
-        <p class="about-me__quote about-me__quote--right">Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</p>
-        <p class="about-me__quote about-me__quote--left">Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</p>
-        <p class="about-me__quote about-me__quote--right">Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </p>
+        <div class="about-me__text-wrap">
+          <div class="about-me__quote-wrap about-me__quote-wrap--right">
+            <p class="about-me__quote about-me__quote--right">Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</p>
+          </div>
+          <div class="about-me__quote-wrap about-me__quote-wrap--left">
+            <p class="about-me__quote about-me__quote--left">Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</p>
+          </div>
+          <div class="about-me__quote-wrap about-me__quote-wrap--right">
+            <p class="about-me__quote about-me__quote--right">Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </p>
+          </div> 
+        </div>
       </section>
-      <section class="skills">
+      <section class="skills container">
         <h2>Skills</h2>
-        <span>I work in such programs as</span>
-        <ul>
-          <li>
-            <img src="" alt="html">
-            <span>HTML 5</span>
+        <span class="skills__text">I work in such programs as</span>
+        <ul class="skills__list">
+          <li class="skills__list__list-item">
+            <svg width="79" height="90" viewBox="0 0 79 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0L7.19464 81L39.5 90L71.7941 81.0056L79 0H0Z" fill="#FF5722"/>
+              <path d="M63.3977 26.4888H39.5002H25.5342L26.437 36.6644H39.5002H62.4949L59.7807 67.1744L39.5002 72.8163L39.4833 72.8219L19.2142 67.1744L17.7978 51.2163H27.7292L28.4684 59.4963L39.4889 62.4832L39.5002 62.4775L50.532 59.4907L51.6832 46.6038H39.5002H17.3915L14.7168 16.5607H39.5002H64.278L63.3977 26.4888Z" fill="#FAFAFA"/>
+              </svg>              
+            <span class="skills__list__list-item__name">HTML 5</span>
             <div>
               <input type="range">
             </div>
           </li>
-          <li>
-            <img src="" alt="CSS/SCSS">
-            <span>CSS/SCSS</span>
+          <li class="skills__list__list-item">
+            <img src="/img/icons/css.svg" alt="CSS/SCSS">
+            <span class="skills__list__list-item__name">CSS/SCSS</span>
             <div>
               <input type="range">
             </div>
           </li>
-          <li>
-            <img src="" alt="JavaScript">
-            <span>JavaScript</span>
+          <li class="skills__list__list-item">
+            <img src="/img/icons/js.svg" alt="JavaScript">
+            <span class="skills__list__list-item__name">JavaScript</span>
             <div>
               <input type="range">
             </div>
           </li>
-          <li>
-            <img src="" alt="Git">
-            <span>Git/GitHub</span>
+          <li class="skills__list__list-item">
+            <img src="/img/icons/git.svg" alt="Git">
+            <span class="skills__list__list-item__name">Git/GitHub</span>
             <div>
               <input type="range">
             </div>
           </li>
-          <li>
-            <img src="" alt="Figma">
-            <span>Figma</span>
+          <li class="skills__list__list-item">
+            <img src="/img/icons/figma.svg" alt="Figma">
+            <span class="skills__list__list-item__name">Figma</span>
             <div>
               <input type="range">
             </div>
           </li>
         </ul>
       </section>
-      <section class="portfolio container">
-        <h2>Portfolio</h2>
-        <div class="portfolio__list">
-          <ul>
-            <li>
+      <section class="portfolio">
+        <h2 class="portfolio__title">Portfolio</h2>
+        <div class="portfolio__list-wrap container">
+          <ul class="portfolio__list">
+            <li class="portfolio__list__list-item portfolio__list__list-item--active">
               <picture></picture>
               <button type="button"></button>
               <button type="button"></button>
@@ -129,7 +140,7 @@
                 <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
               </div>
             </li>
-            <li>
+            <li class="portfolio__list__list-item portfolio__list__list-item--hidden">
               <picture></picture>
               <button type="button"></button>
               <button type="button"></button>
@@ -138,7 +149,7 @@
                 <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
               </div>
             </li>
-            <li>
+            <li class="portfolio__list__list-item portfolio__list__list-item--hidden">
               <picture></picture>
               <button type="button"></button>
               <button type="button"></button>
@@ -147,7 +158,7 @@
                 <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
               </div>
             </li>
-            <li>
+            <li class="portfolio__list__list-item portfolio__list__list-item--hidden">
               <picture></picture>
               <button type="button"></button>
               <button type="button"></button>
