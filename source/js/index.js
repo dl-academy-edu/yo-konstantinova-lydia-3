@@ -1,6 +1,9 @@
 let openMenu = document.querySelector(".header-mob-js");
 let openMenuBtn = document.querySelector(".heading-section__menu-btn");
 let closeMenu = document.querySelector(".header-mob__close-btn");
+let signInModal = document.querySelector(".sign-in-modal-js");
+let openSignInModal = document.querySelector(".sign-in-modal-btn-js");
+let closeSignInModal = document.querySelector(".sign-in-modal__close-btn")
 
 openMenuBtn.addEventListener("click", function() {
     openMenu.classList.add("header-mob");
@@ -8,4 +11,15 @@ openMenuBtn.addEventListener("click", function() {
 
 closeMenu.addEventListener("click", function() {
     openMenu.classList.remove("header-mob");
+})
+
+openSignInModal.addEventListener("click", function() {
+    signInModal.classList.remove("hidden");
+    signInModal.classList.add("sign-in-modal");
+})
+
+
+closeSignInModal.addEventListener("click", function() {
+    signInModal.classList.remove("sign-in-modal");
+    signInModal.classList.add("hidden");
 })
