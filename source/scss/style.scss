@@ -20,6 +20,7 @@
 @import "_blocks/header";
 @import "_blocks/sign_modal";
 
+
 // Fonts
 
 @font-face {
@@ -331,3 +332,84 @@
     }
   }
 }
+
+// blog styles
+
+.blog {
+  &__title {
+    margin: 40px 0;
+  }
+  &__filter-section {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 48px;
+    &__filter__checkbox {
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border: 3px solid;
+      border-radius: 5px;
+    }
+  }
+}
+
+.blog__filter-section__filter__checkbox {
+  &:checked {
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &--blue {
+    border-color: #2176FF;
+    &:checked {
+      background-image: url(/img/icons/checked_blue.svg);
+    }
+  }
+  &--light-blue {
+    border-color: #33A1FD;
+    &:checked {
+      background-image: url(/img/icons/checked_light-blue.svg);
+    }
+  }
+  &--light-orange {
+    border-color: #FDCA40;
+    &:checked {
+      background-image: url(/img/icons/checked_light-orange.svg);
+    }
+  }
+  &--marine {
+    border-color: #57E2E5;
+    &:checked {
+      background-image: url(/img/icons/checked_marine.svg);
+    }
+  }
+  &--orange {
+    border-color: #F79824;
+    &:checked {
+      background-image: url(/img/icons/checked_orange.svg);
+    }
+  }
+  &--pink {
+    border-color: #E08DAC;
+    &:checked {
+      background-image: url(/img/icons/checked_pink.svg);
+    }
+  }
+  &--violet {
+    border-color: #6A7FDB;
+    &:checked {
+      background-image: url(/img/icons/checked_violet.svg);
+    }
+  }
+  &--green {
+    border-color: #45CB85;
+    &:checked {
+      background-image: url(/img/icons/checked_green.svg);
+    }
+  }
+}
+
+  // &:checked {
+  //   background-image: url(/img/icons/checked_blue.svg);
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+  // }

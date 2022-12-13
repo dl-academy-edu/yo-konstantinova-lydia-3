@@ -1,15 +1,18 @@
 <header class="header container">
     <nav class="header__nav">
-        <a href="index.html" class="header__main-anchor">Home</a>
+        <a href="index.html" class="header__nav__main-anchor @@home-disabled">Home</a>
         <ul class="header__nav__list">
             <li>
-                <a href="blog.html" class="header__nav__list__list-item">My blog</a>
+                <a href="blog.html" class="header__nav__list__list-item @@my-blog-active">My blog</a>
             </li>
-            <li>
+            <li class="@@hide-sign-in">
                 <button type="button" class="header__nav__list__list-item sign-in-modal-btn-js">Sign in</button>
             </li>
-            <li>
+            <li class="@@hide-register">
                 <button type="button" class="header__nav__list__list-item">Register</button>
+            </li>
+            <li class="@@hide-profile">
+                <a href="profile.html" class="header__nav__list__list-item @@my-profile-active">My profile</a>
             </li>
         </ul>
     </nav>

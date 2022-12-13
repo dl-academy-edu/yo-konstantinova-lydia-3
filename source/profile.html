@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- build:css -->
+        <link href="css/style.min.css" rel="stylesheet">
+        <!-- endbuild -->
+    <title>My profile</title>
+</head>
+<body>
+    @@include('blocks/header.html', {
+        "hide-sign-in": "hidden",
+        "hide-register": "hidden",
+        "home-disabled": "header__disabled-page",
+        "my-profile-active": "header__active-page",
+    })
+    <main></main>
+    @@include('blocks/footer.html')
+</body>
+</html>

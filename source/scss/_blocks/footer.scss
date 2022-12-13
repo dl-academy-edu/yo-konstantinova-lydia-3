@@ -27,14 +27,6 @@
     gap: 10px;
     max-width: 350px;
     margin-bottom: 40px;
-    &__list-item > a{
-      color: #070707;
-      font-weight: 700;
-      display: inline-block;
-      border: 2.5px solid #070707;
-      border-radius: 30px;
-      padding: 10px 19px;
-    }
   }
   &__design-by, &__code-by, .dashed-underline {
     color: #828282;

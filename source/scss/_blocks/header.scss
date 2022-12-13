@@ -12,7 +12,7 @@
                 font-weight: 700;
             }
         }
-        &>a {
+        &__main-anchor {
             color: #070707;
             font-size: 18px;
             line-height: 22px;
@@ -29,6 +29,16 @@
     }
 }
 
+.header {
+    &__active-page {
+        color: #070707;
+        font-weight: 700;
+    }
+    &__disabled-page {
+        color: #828282;
+        font-weight: 700;   
+    }
+}
 
 @media screen and (max-width:376px) {
     .header-mob{
