@@ -84,6 +84,8 @@
     background-color: transparent;
     width: 32px;
     height: 20px;
+    vertical-align: top;
+    margin-top: 40px;
     @media screen and (min-width:376px) {
       display: none;
     }
@@ -338,11 +340,46 @@
 .blog {
   &__title {
     margin: 40px 0;
+    display: inline-block;
+    line-height: 56px;
+    @media screen and (max-width: 375px) {
+      width: 20%;
+      margin-right: 66%;
+      margin-top: 30px;
+    }
   }
   &__filter-section {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: space-between;
     gap: 48px;
+    margin-bottom: 35px;
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap;
+      row-gap: 30px;
+    }
+    &__btn {
+      @media screen and (max-width: 768px) {
+        order: 6;
+        margin-right: auto;
+      }
+    }
+    &__search {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 20px;
+      &>input {
+        width: 100%;
+        border: 2.5px solid #E5E5E5;
+        @media screen and (max-width: 375px) {
+          height: 50px;
+        }
+      }
+      @media screen and (max-width: 375px) {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    }
     &__filter__checkbox {
       appearance: none;
       width: 25px;
@@ -406,10 +443,65 @@
       background-image: url(/img/icons/checked_green.svg);
     }
   }
+  &--black:checked {
+    background-image: url(/img/icons/checked.svg);
+  }
 }
 
-  // &:checked {
-  //   background-image: url(/img/icons/checked_blue.svg);
-  //   background-repeat: no-repeat;
-  //   background-position: center;
-  // }
+.blog__filter-section__filter {
+  border: none;
+  padding: 0;
+  &__name {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  &--tags {
+    width: 13%;
+    @media screen and (max-width: 769px) {
+      order: 5;
+      width: 22%;
+    }
+    @media screen and (max-width: 375px) {
+      width: 49%;
+    }
+  }
+  &--views {
+    @include filter-flex;
+    @media screen and (max-width: 768px) {
+      order: 2;
+    }
+  }
+  &--comments {
+    @include filter-flex;
+    @media screen and (max-width: 768px) {
+      order: 1;
+    }
+  }
+  &--how-show {
+    @include filter-flex;
+    @media screen and (max-width: 768px) {
+      order: 4;
+    }
+  }
+  &--sort {
+    @include filter-flex;
+    @media screen and (max-width: 768px) {
+      order: 3;
+    }
+  }
+  &__radio {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background-image: url(/img/icons/radio.svg);
+    &:checked {
+      background-image: url(/img/icons/radio_check.svg);
+    }
+  }
+  &__input-wrap {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+  }
+}
