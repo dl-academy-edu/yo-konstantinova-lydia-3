@@ -65,3 +65,16 @@ hr {
   height: 2px;
   border: none;
 }
+
+.page-title-mob {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 36px;
+  &>h1 {
+    max-width: 50%;
+  }
+  @media screen and (min-width:376px) {
+    display: none;
+  }
+}

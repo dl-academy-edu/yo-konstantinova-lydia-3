@@ -16,8 +16,49 @@
         "home-disabled": "header__disabled-page",
         "my-profile-active": "header__active-page",
     })
-    <main></main>
-    @@include('blocks/footer.html')
+    <main>
+        <section class="profile container">
+            <h1 class="profile__title">My profile</h1>
+            <div class="page-title-mob">
+                <h1>My profile</h1>
+                <button type="button" class="heading-section__menu-btn"></button>
+            </div>
+            <div class="profile-wrap">
+                <img src="/img/icons/pic-holder.svg" alt="picture" class="profile__img">
+                <div class="profile__info">
+                    <div class="profile__info__wrap profile__info__wrap--name">
+                        <span class="profile__info__type-of-data">Name:</span>
+                        <span>Oksana</span>
+                    </div>
+                    <div class="profile__info__wrap profile__info__wrap--surname">
+                        <span class="profile__info__type-of-data">Surame:</span>
+                        <span>Larioshkina</span>
+                    </div>
+                    <div class="profile__info__wrap profile__info__wrap--email">
+                        <span class="profile__info__type-of-data">Email:</span>
+                        <span>larioshkina@gmail.com</span>
+                    </div>
+                    <div class="profile__info__wrap profile__info__wrap--password">
+                        <span class="profile__info__type-of-data">Pasword:</span>
+                        <span>**********</span>
+                    </div>
+                    <div class="profile__info__wrap profile__info__wrap--location">
+                        <span class="profile__info__type-of-data">Location:</span>
+                        <span>Tolyatti</span>
+                    </div>
+                    <div class="profile__info__wrap profile__info__wrap--age">
+                        <span class="profile__info__type-of-data">Age:</span>
+                        <span>23</span>
+                    </div>
+                    <div class="profile__info__btn-wrap">
+                        <button type="button" class="btn">Change password</button>
+                        <button type="button" class="btn">Change other data</button>
+                        <button type="button" class="btn">Delete account</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="js/index.js"></script>
 </body>
 </html>
