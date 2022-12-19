@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>DL Academy</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <script>
+      var docElement = document.documentElement;
+      docElement.className = docElement.className.replace(/\bno-js\b/, '') + ' js';
+    </script>
+
+    <!-- Favicon -->
+
+    <!-- build:css -->
+    <link href="css/style.min.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+  <body>
+    @@include('blocks/header.html', {
+      "hide-profile": "hidden"
+    })
+    <main>
+      <section class="heading-section container">
+        <div class="heading-section__desc">
+          <h1>Antonina Antoninovna</h1>
+          <p>Future front-end developer 23 years old, Tolyatti</p>
+          <button type="button" class="heading-section__menu-btn"></button>
+        </div>
+        <div class="heading-section__slider">
+          <ul class="heading-section__slider__list">
+            <li class="heading-section__slider__list__list-item">
+              <picture>
+                <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <source media="(max-width:1023px)"
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
+              </picture>
+            </li>
+            <li class="heading-section__slider__list__list-item">
+              <picture></picture>
+            </li>
+            <li class="heading-section__slider__list__list-item">
+              <picture></picture>
+            </li>
+            <li class="heading-section__slider__list__list-item">
+              <picture></picture>
+            </li>
+          </ul>
+          <div class="heading-section__slider__controls">
+            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--left"></button>
+            <ul class="heading-section__slider__controls__list">
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--active">
+                <button type="button"></button>
+              </li>
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
+                <button type="button"></button>
+              </li>
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
+                <button type="button"></button>
+              </li>
+              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
+                <button type="button"></button>
+              </li>
+            </ul>
+            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--right"></button>
+          </div>
+        </div>
+      </section>
+      <section class="about-me">
+        <h2 class="about-me__title">About me</h2>
+        <div class="about-me__text-wrap container">
+            <p class="about-me__quote about-me__quote--right">Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</p>
+            <p class="about-me__quote about-me__quote--left">Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</p>
+            <p class="about-me__quote about-me__quote--right">Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </p>
+        </div>
+      </section>
+      <section class="skills container">
+        <h2>Skills</h2>
+        <span class="skills__text">I work in such programs as</span>
+        <ul class="skills__list">
+          @@include('blocks/skill.html', {
+            "src": "/img/icons/html.svg",
+            "alt": "HTML",
+            "skill": "HTML", 
+            "percent": "85%",
+            "class": "skills__list__list-item__percent-range--html"
+          })
+          @@include('blocks/skill.html', {
+            "src": "/img/icons/css.svg",
+            "alt": "CSS/SCSS",
+            "skill": "CSS/SCSS", 
+            "percent": "55%",
+            "class": "skills__list__list-item__percent-range--css"
+          })
+          @@include('blocks/skill.html', {
+            "src": "/img/icons/js.svg",
+            "alt": "JavaScript",
+            "skill": "JavaScript", 
+            "percent": "5%",
+            "class": "skills__list__list-item__percent-range--js"
+          })
+          @@include('blocks/skill.html', {
+            "src": "/img/icons/git.svg",
+            "alt": "Git",
+            "skill": "Git/GitHub", 
+            "percent": "15%",
+            "class": "skills__list__list-item__percent-range--git"
+          })
+          @@include('blocks/skill.html', {
+            "src": "/img/icons/figma.svg",
+            "alt": "Figma",
+            "skill": "Figma", 
+            "percent": "80%",
+            "class": "skills__list__list-item__percent-range--figma"
+          })
+        </ul>
+      </section>
+      <section class="portfolio">
+        <h2 class="portfolio__title">Portfolio</h2>
+        <div class="portfolio__list-wrap container">
+          <ul class="portfolio__list">
+            <li class="portfolio__list__list-item">
+              <picture>
+                <source media="(max-width:768px)"
+                srcset="/img/images/portfolio_slide_1.png"
+                width="768"
+                height="400"
+                alt="Photo of Antonina">
+              <img src="/img/images/portfolio_slide_1.png" alt="DLK site screenshot" class="portfolio__list__img">
+              </picture>
+              <div class="portfolio__list__btn-wrap">
+                <button type="button" class="portfolio__list__btn portfolio__list__btn--left"></button>
+                <button type="button" class="portfolio__list__btn portfolio__list__btn--right"></button>
+              </div>
+              <div class="portfolio__list__text-wrap">
+                <p class="portfolio__list__text-wrap__project-name">Learning site for DL Academy courses</p>
+                <p class="portfolio__list__text-wrap__project-desc">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              </div>
+            </li>
+            <li class="portfolio__list__list-item hidden">
+              <picture></picture>
+              <button type="button"></button>
+              <button type="button"></button>
+              <div>
+                <p>Learning site for DL Academy courses</p>
+                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              </div>
+            </li>
+            <li class="portfolio__list__list-item hidden">
+              <picture></picture>
+              <button type="button"></button>
+              <button type="button"></button>
+              <div>
+                <p>Learning site for DL Academy courses</p>
+                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              </div>
+            </li>
+            <li class="portfolio__list__list-item hidden">
+              <picture></picture>
+              <button type="button"></button>
+              <button type="button"></button>
+              <div>
+                <p>Learning site for DL Academy courses</p>
+                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    @@include('blocks/footer.html')
+    @@include('blocks/sign_modal.html')
+    <script src="js/index.js"></script>
+  </body>
+</html>

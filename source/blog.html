@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.min.css" rel="stylesheet">
+    <title>My blog</title>
+</head>
+<body>
+    @@include('blocks/header.html', {
+        "hide-sign-in": "hidden",
+        "hide-register": "hidden",
+        "home-disabled": "header__disabled-page",
+        "my-blog-active": "header__active-page",
+    })
+    <main class="container">
+        <section class="blog">
+            <h1 class="blog__title">My blog</h1>
+            <div class="page-title-mob">
+                <h1>My blog</h1>
+                <button type="button" class="heading-section__menu-btn"></button>
+            </div>
+            <form class="blog__filter-section">
+                <fieldset class="blog__filter-section__filter blog__filter-section__filter--tags">
+                    <legend class="blog__filter-section__filter__name">Tags</legend>
+                    <label for="blue">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--blue" id="blue" checked>
+                    </label>
+                    <label for="light-blue">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--light-blue" id="light-blue">
+                    </label>
+                    <label for="light-orange">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--light-orange" id="light-orange">
+                    </label>
+                    <label for="marine">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--marine" id="marine">
+                    </label>
+                    <label for="orange">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--orange" id="orange">
+                    </label>
+                    <label for="pink">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--pink" id="pink" checked>
+                    </label>
+                    <label for="violet">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--violet" id="violet">
+                    </label>
+                    <label for="green">
+                        <input type="checkbox" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--green" id="green">
+                    </label>
+                </fieldset>
+                <fieldset class="blog__filter-section__filter blog__filter-section__filter--views">
+                    <legend class="blog__filter-section__filter__name">Views</legend>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="views" id="few" class="blog__filter-section__filter__radio">
+                        <label for="views">100-500</label>
+                    </div>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="views" id="more" class="blog__filter-section__filter__radio" checked>
+                        <label for="views">500-1000</label>
+                    </div>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="views" id="many" class="blog__filter-section__filter__radio">
+                        <label for="views">1000-2000</label>
+                    </div>
+                </fieldset>
+                <fieldset class="blog__filter-section__filter blog__filter-section__filter--comments">
+                    <legend class="blog__filter-section__filter__name">Comments</legend>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="checkbox" id="no-comments" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--black" checked>
+                        <label for="no-comments">0</label>
+                    </div>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="checkbox" id="one-comment" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--black">
+                        <label for="one-comment">0-1</label>
+                    </div>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="checkbox" id="few-comments" class="blog__filter-section__filter__checkbox blog__filter-section__filter__checkbox--black">
+                        <label for="few-comments">1-50</label>
+                    </div>
+                </fieldset>
+                <fieldset class="blog__filter-section__filter blog__filter-section__filter--how-show">
+                    <legend class="blog__filter-section__filter__name">How show?</legend>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="how-show" id="show-5" class="blog__filter-section__filter__radio" checked>
+                        <label for="show-5">show 5</label>
+                    </div>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="how-show" id="show-10" class="blog__filter-section__filter__radio">
+                        <label for="show-10">show 10</label>
+                    </div>
+                </fieldset>
+                <fieldset class="blog__filter-section__filter blog__filter-section__filter--sort">
+                    <legend class="blog__filter-section__filter__name">Sort by</legend>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="sort" id="date" class="blog__filter-section__filter__radio" checked>
+                        <label for="date">date</label>
+                    </div>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="sort" id="title" class="blog__filter-section__filter__radio">
+                        <label for="title">title</label>
+                    </div>
+                    <div class="blog__filter-section__filter__input-wrap">
+                        <input type="radio" name="sort" id="views" class="blog__filter-section__filter__radio">
+                        <label for="views">views</label>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn blog__filter-section__btn">Apply</button>
+            </form>
+            <div class="blog__filter-section__search">
+                <input type="search" id="search">
+                <label for="search">
+                    <button type="submit" class="btn">Search</button>
+                </label>
+            </div>
+        </section>
+        <hr>
+    </main>
+    @@include('blocks/footer.html')
+    <script src="js/index.js"></script>
+</body>
+</html>
