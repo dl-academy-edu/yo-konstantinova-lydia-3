@@ -14,11 +14,15 @@
     color: #fff;
     font-weight: 700;
     background-color: #070707;
-    border: none;
+    border: 2.5px solid #070707;
     padding: 10px 29px;
     border-radius: 30px;
     margin-bottom: 40px;
     cursor: pointer;
+    &:hover {
+      color: #070707;
+      background-color: #fff;
+    }
   }
   &__socials-list {
     display: flex;
@@ -38,4 +42,8 @@
 
 .dashed-underline {
   text-decoration: underline dashed;
+  &:hover {
+    color: #070707;
+    text-decoration: underline;
+  }
 }

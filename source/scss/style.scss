@@ -118,9 +118,15 @@
     cursor: pointer;
     &--left {
       background-image: url(/img/icons/arrow_left.svg);
+      &:hover {
+        background-image: url(/img/icons/arrow_left_hover.svg);
+      }
     }
     &--right {
       background-image: url(/img/icons/arrow_right.svg);
+      &:hover {
+        background-image: url(/img/icons/arrow_right_hover.svg);
+      }
     }
   }
   &__list__list-item > button {
@@ -131,6 +137,9 @@
     cursor: pointer;
   }
   &__list__list-item{
+    &>button:hover {
+      background-color: #828282;
+    }
     &--active > button {
     background-color: #070707;
     }
@@ -325,9 +334,13 @@
     }
     &__text-wrap__project-name {
       text-decoration: underline dashed;
-      margin-bottom: 16px;
+      color: #FFFFFF;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     &__text-wrap__project-desc {
+      margin-top: 16px;
       font-size: 14px;
       line-height: 17px;
     }
@@ -368,6 +381,12 @@
       &>input {
         width: 100%;
         border: 2.5px solid #E5E5E5;
+        &:hover {
+          border-color: #828282;
+        }
+        &:focus {
+          border-color: #070707;
+        }
         @media screen and (max-width: 375px) {
           height: 50px;
         }
@@ -377,69 +396,6 @@
         justify-content: flex-end;
       }
     }
-  }
-}
-
-.checkbox {
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border: 3px solid;
-  border-radius: 5px;
-  &:checked {
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  &--blue {
-    border-color: #2176FF;
-    &:checked {
-      background-image: url(/img/icons/checked_blue.svg);
-    }
-  }
-  &--light-blue {
-    border-color: #33A1FD;
-    &:checked {
-      background-image: url(/img/icons/checked_light-blue.svg);
-    }
-  }
-  &--light-orange {
-    border-color: #FDCA40;
-    &:checked {
-      background-image: url(/img/icons/checked_light-orange.svg);
-    }
-  }
-  &--marine {
-    border-color: #57E2E5;
-    &:checked {
-      background-image: url(/img/icons/checked_marine.svg);
-    }
-  }
-  &--orange {
-    border-color: #F79824;
-    &:checked {
-      background-image: url(/img/icons/checked_orange.svg);
-    }
-  }
-  &--pink {
-    border-color: #E08DAC;
-    &:checked {
-      background-image: url(/img/icons/checked_pink.svg);
-    }
-  }
-  &--violet {
-    border-color: #6A7FDB;
-    &:checked {
-      background-image: url(/img/icons/checked_violet.svg);
-    }
-  }
-  &--green {
-    border-color: #45CB85;
-    &:checked {
-      background-image: url(/img/icons/checked_green.svg);
-    }
-  }
-  &--black:checked {
-    background-image: url(/img/icons/checked.svg);
   }
 }
 
