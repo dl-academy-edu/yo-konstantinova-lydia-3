@@ -61,11 +61,19 @@
         &__input-wrap {
             display: flex;
             flex-direction: column;
-            &:nth-child(1){
+            &--register-email{
                 width: 100%;
             }
             &>label {
                 margin-bottom: 6px;
+            }
+            &--message {
+                width: 100%;
+                &>textarea {
+                    width: 100%;
+                    resize: none;
+                    min-height: 150px;
+                }
             }
         }
         &__checkbox-wrap {
