@@ -18,8 +18,7 @@
 @import "_blocks/container";
 @import "_blocks/footer";
 @import "_blocks/header";
-@import "_blocks/sign_modal";
-
+@import "_blocks/modal";
 
 // Fonts
 
@@ -378,17 +377,15 @@
         justify-content: flex-end;
       }
     }
-    &__filter__checkbox {
-      appearance: none;
-      width: 25px;
-      height: 25px;
-      border: 3px solid;
-      border-radius: 5px;
-    }
   }
 }
 
-.blog__filter-section__filter__checkbox {
+.checkbox {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 3px solid;
+  border-radius: 5px;
   &:checked {
     background-repeat: no-repeat;
     background-position: center;
