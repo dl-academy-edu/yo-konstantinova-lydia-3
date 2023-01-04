@@ -1,0 +1,12 @@
+.scroll-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 150px;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    background-image: url(/img/icons/scroll_button.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}

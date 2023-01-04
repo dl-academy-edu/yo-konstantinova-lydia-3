@@ -16,6 +16,7 @@ let closeMessageModal = document.querySelector(".modal__close-btn--msg");
 let checkboxMessage = document.querySelectorAll(".cb-js")[1];
 let formBtnMessage = document.querySelectorAll(".btn-register-js")[1];
 let checkboxLabelMessage = document.querySelectorAll(".cb-label-js")[1];
+let scrollBtn = document.querySelector(".scroll-btn");
 
 
 const openModal = function () {
@@ -46,6 +47,21 @@ window.addEventListener("keydown", function(e) {
         messageModal.classList.remove("modal");
         messageModal.classList.add("hidden");
     }
+})
+
+window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 1500) {
+        scrollBtn.classList.remove("hidden");
+    } else {
+        scrollBtn.classList.add("hidden");
+    }
+})
+
+scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    })
 })
 
 openSignInModal.addEventListener("click", openModal);
