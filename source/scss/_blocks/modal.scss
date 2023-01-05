@@ -36,6 +36,9 @@
             width: 290px;
             height: 50px;
             border: 2.5px solid #E5E5E5;
+            &--invalid {
+                border-color: #EB3617;
+            }
             &:hover {
                 border: 2.5px solid #828282;
             }
@@ -113,4 +116,14 @@
 
 .color-red {
     color: #EB3617;
+}
+
+// стили для валидации форм
+
+.invalid-message {
+    &--email {
+        color: #EB3617;
+        width: 290px;
+        margin-bottom: 10px;
+    }
 }

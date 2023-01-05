@@ -22,21 +22,21 @@ let scrollBtn = document.querySelector(".scroll-btn");
 const openModal = function () {
     signInModal.classList.remove("hidden");
     signInModal.classList.add("modal");
-}
+};
 
 const closeModal = function () {
     signInModal.classList.remove("modal");
     signInModal.classList.add("hidden");
-}
+};
 
 
 openMenuBtn.addEventListener("click", function() {
     openMenu.classList.add("header-mob");
-})
+});
 
 closeMenu.addEventListener("click", function() {
     openMenu.classList.remove("header-mob");
-})
+});
 
 window.addEventListener("keydown", function(e) {
     if (e.key === "Escape") {
@@ -47,7 +47,7 @@ window.addEventListener("keydown", function(e) {
         messageModal.classList.remove("modal");
         messageModal.classList.add("hidden");
     }
-})
+});
 
 window.addEventListener("scroll", () => {
     if (window.pageYOffset > 1500) {
@@ -55,14 +55,14 @@ window.addEventListener("scroll", () => {
     } else {
         scrollBtn.classList.add("hidden");
     }
-})
+});
 
 scrollBtn.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
         behavior: "smooth",
     })
-})
+});
 
 openSignInModal.addEventListener("click", openModal);
 closeSignInModal.addEventListener("click", closeModal);
@@ -70,12 +70,12 @@ closeSignInModal.addEventListener("click", closeModal);
 openRegisterModal.addEventListener("click", function() {
     registerModal.classList.remove("hidden");
     registerModal.classList.add("modal");
-})
+});
 
 closeRegisterModal.addEventListener("click", function() {
     registerModal.classList.remove("modal");
     registerModal.classList.add("hidden");
-})
+});
 
 checkbox.addEventListener("click", function() {
     if (checkbox.checked) {
@@ -84,7 +84,7 @@ checkbox.addEventListener("click", function() {
     } else {
         formBtn.setAttribute("diasbled");
     }
-})
+});
 
 checkboxMessage.addEventListener("click", function() {
     if (checkboxMessage.checked) {
@@ -93,14 +93,50 @@ checkboxMessage.addEventListener("click", function() {
     } else {
         formBtnMessage.setAttribute("diasbled");
     }
-})
+});
 
 openMessageModal.addEventListener("click", function() {
     messageModal.classList.remove("hidden");
     messageModal.classList.add("modal");
-})
+});
 
 closeMessageModal.addEventListener("click", function() {
     messageModal.classList.remove("modal");
     messageModal.classList.add("hidden");
-})
+});
+
+// валидация форм
+
+// (function() {
+//     const signInForm = document.forms.signIn;
+//     const email = signIn.querySelector("input[type=email]");
+//     const password = signIn.querySelector("input[type=password");
+
+//     signInForm.addEventListener("submit", (event) => {
+//         event.preventDefault();
+//         if (isEmailCorrect(email.value)) {
+//             const data = {
+//                 email: email.value,
+//                 password: password.value,
+//             };
+//             console.log(data);
+//         } else {
+//             const errorCreator = (message) => {
+//                 let messageErrorContainer = document.createElement("div");
+//                 messageErrorContainer.classList.add("invalid-message--email");
+//                 messageErrorContainer.innerText = message;
+//                 return messageErrorContainer;
+//             }
+//             const insertAfterElement = document.getElementById("sign-in-email");
+//             insertAfterElement.insertAdjacentElement("afterend", errorCreator('Please enter a valid email address (your entry is not in the format "somebody@example.com")'));
+//         }
+//     })
+// })();
+
+// function isEmailCorrect(email) {
+//     return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
+// }
+
+// function isPhoneCorrect(phone) {
+//     return phone.match(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/);
+// }
