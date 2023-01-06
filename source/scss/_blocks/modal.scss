@@ -121,9 +121,7 @@
 // стили для валидации форм
 
 .invalid-message {
-    &--email {
-        color: #EB3617;
-        width: 290px;
-        margin-bottom: 10px;
-    }
+    color: #EB3617;
+    width: 290px;
+    margin-bottom: 15px;
 }
