@@ -33,46 +33,63 @@
           <button type="button" class="heading-section__menu-btn"></button>
         </div>
         <div class="heading-section__slider">
-          <ul class="heading-section__slider__list">
-            <li class="heading-section__slider__list__list-item">
-              <picture>
-                <source media="(max-width:376px)"
+            <div class="slider">
+                <div class="slider__wrapper">
+                  <div class="slider__inner-wrapper">
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
                         srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x"
                         alt="Photo of Antonina">
                 <source media="(max-width:1023px)"
                         srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x"
                         alt="Photo of Antonina">
                 <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
-              </picture>
-            </li>
-            <li class="heading-section__slider__list__list-item">
-              <picture></picture>
-            </li>
-            <li class="heading-section__slider__list__list-item">
-              <picture></picture>
-            </li>
-            <li class="heading-section__slider__list__list-item">
-              <picture></picture>
-            </li>
-          </ul>
-          <div class="heading-section__slider__controls">
-            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--left"></button>
-            <ul class="heading-section__slider__controls__list">
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--active">
-                <button type="button"></button>
-              </li>
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
-                <button type="button"></button>
-              </li>
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
-                <button type="button"></button>
-              </li>
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
-                <button type="button"></button>
-              </li>
-            </ul>
-            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--right"></button>
-          </div>
+                      </picture>
+                    </div>
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <source media="(max-width:1023px)"
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
+                      </picture>
+                    </div>
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <source media="(max-width:1023px)"
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
+                      </picture>
+                    </div>
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <source media="(max-width:1023px)"
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x"
+                        alt="Photo of Antonina">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__bottom-panel">
+                  <button class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--left slider__button slider__button--back slider__button--back--js"></button>
+                  <div class="slider__pagination slider__pagination--js">
+
+                  </div>
+                  <button class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--right slider__button slider__button--next slider__button--next--js"></button>
+                </div>
+              </div>
         </div>
       </section>
       <section class="about-me">
@@ -181,5 +198,6 @@
     @@include('blocks/scroll_button.html')
     <script src="js/index.js"></script>
     <script src="js/validation.js"></script>
+    <script src="js/slider.js"></script>
   </body>
 </html>
