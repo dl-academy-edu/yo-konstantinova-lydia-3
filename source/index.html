@@ -6,6 +6,11 @@
     <meta name="google" content="notranslate">
     <meta name="format-detection" content="telephone=no">
 
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
     <title>DL Academy</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -144,53 +149,40 @@
       <section class="portfolio">
         <h2 class="portfolio__title">Portfolio</h2>
         <div class="portfolio__list-wrap container">
-          <ul class="portfolio__list">
-            <li class="portfolio__list__list-item">
-              <picture>
-                <source media="(max-width:768px)"
-                srcset="/img/images/portfolio_slide_1.png"
-                width="768"
-                height="400"
-                alt="Photo of Antonina">
-              <img src="/img/images/portfolio_slide_1.png" alt="DLK site screenshot" class="portfolio__list__img">
-              </picture>
-              <div class="portfolio__list__btn-wrap">
-                <button type="button" class="portfolio__list__btn portfolio__list__btn--left"></button>
-                <button type="button" class="portfolio__list__btn portfolio__list__btn--right"></button>
+          <div class="portfolio__list swiper">
+            <div class="portfolio__list__list-item swiper-wrapper">
+              <div class="swiper-slide">
+                <picture>
+                  <source media="(max-width:376px)"
+                  srcset="/img/images/portfolio_slide_1_mob.png"
+                  alt="DLK site screenshot">
+                  <img src="/img/images/portfolio_slide_1.png" alt="DLK site screenshot">
+                </picture>
               </div>
-              <div class="portfolio__list__text-wrap">
-                <a href="#" class="portfolio__list__text-wrap__project-name">Learning site for DL Academy courses</a>
-                <p class="portfolio__list__text-wrap__project-desc">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              <div class="swiper-slide">
+                <picture>
+                  <source media="(max-width:376px)"
+                  srcset="/img/images/portfolio_slide_2_mob.png"
+                  alt="DLK site screenshot">
+                  <img src="/img/images/portfolio_slide_2.png" alt="DLK site screenshot">
+                </picture>
               </div>
-            </li>
-            <li class="portfolio__list__list-item hidden">
-              <picture></picture>
-              <button type="button"></button>
-              <button type="button"></button>
-              <div>
-                <p>Learning site for DL Academy courses</p>
-                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              <div class="swiper-slide">
+                <picture>
+                  <source media="(max-width:376px)"
+                  srcset="/img/images/portfolio_slide_3_mob.png"
+                  alt="DLK site screenshot">
+                  <img src="/img/images/portfolio_slide_3.png" alt="DLK site screenshot">
+                </picture>
               </div>
-            </li>
-            <li class="portfolio__list__list-item hidden">
-              <picture></picture>
-              <button type="button"></button>
-              <button type="button"></button>
-              <div>
-                <p>Learning site for DL Academy courses</p>
-                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
-              </div>
-            </li>
-            <li class="portfolio__list__list-item hidden">
-              <picture></picture>
-              <button type="button"></button>
-              <button type="button"></button>
-              <div>
-                <p>Learning site for DL Academy courses</p>
-                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
-              </div>
-            </li>
-          </ul>
+            </div>
+            <button type="button" class="swiper-button-prev"></button>
+            <button type="button" class="swiper-button-next"></button>
+          </div>
+          <div class="portfolio__list__text-wrap">
+            <a href="#" class="portfolio__list__text-wrap__project-name">Learning site for DL Academy courses</a>
+            <p class="portfolio__list__text-wrap__project-desc">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+          </div>
         </div>
       </section>
     </main>
@@ -199,5 +191,6 @@
     <script src="js/index.js"></script>
     <script src="js/validation.js"></script>
     <script src="js/slider.js"></script>
+    <script src="js/swiper.js"></script>
   </body>
 </html>
