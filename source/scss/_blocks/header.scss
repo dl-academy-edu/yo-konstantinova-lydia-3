@@ -10,6 +10,9 @@
             &__list-item {
                 color: #828282;
                 font-weight: 700;
+                &:hover{
+                    color: #070707;
+                }
             }
         }
         &__main-anchor {
@@ -73,6 +76,9 @@
             line-height: 41px;
             font-weight: 700;
             color: #828282;
+            &:hover{
+                color: #070707;
+            }
         }
         &__nav__list__link--main {
             color: #070707;

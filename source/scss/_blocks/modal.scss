@@ -1,0 +1,127 @@
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F6F6F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 17px;
+    z-index: 999;
+    &__wrap {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        border: 3px solid #070707;
+        padding: 40px;
+        background-color: #FFFFFF;
+        &--register {
+            max-width: 680px;
+            flex-direction: unset;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        &__label {
+            margin-bottom: 6px;
+        }
+        &__input {
+            margin-bottom: 20px;
+            width: 290px;
+            height: 50px;
+            border: 2.5px solid #E5E5E5;
+            &--invalid {
+                border-color: #EB3617;
+            }
+            &:hover {
+                border: 2.5px solid #828282;
+            }
+            &:focus {
+                border: 2.5px solid #070707;
+            }
+            &--email {
+                width: 100%;
+            }
+        }
+        &__btn {
+            margin-top: 10px;
+            color: #070707;
+            font-weight: 700;
+            display: inline-block;
+            border: 2.5px solid #070707;
+            border-radius: 30px;
+            padding: 10px 19px;
+            width: 88px;
+            background-color: transparent;
+            &--register {
+                width: 109px;
+                font-size: 18px;
+                &:disabled {
+                    color: #E5E5E5;
+                    border-color: #E5E5E5;
+                    cursor: no-drop;
+                }
+            }
+        }
+        &__input-wrap {
+            display: flex;
+            flex-direction: column;
+            &--register-email{
+                width: 100%;
+            }
+            &>label {
+                margin-bottom: 6px;
+            }
+            &--message {
+                width: 100%;
+                &>textarea {
+                    width: 100%;
+                    resize: none;
+                    min-height: 150px;
+                }
+            }
+        }
+        &__checkbox-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            &>input:not(:checked) {
+                border-color: #E5E5E5;
+            }
+            &__label-disabled {
+                color: #E5E5E5;
+            }
+        }
+    }
+    &__close-btn {
+        background-color: transparent;
+        background-image: url(/img/icons/modal_close.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        border: none;
+        &:hover  {
+            background-image: url(/img/icons/modal_close_hover.svg);
+        }
+    }
+}
+
+.color-red {
+    color: #EB3617;
+}
+
+// стили для валидации форм
+
+.invalid-message {
+    color: #EB3617;
+    width: 290px;
+    margin-bottom: 15px;
+}

@@ -58,6 +58,10 @@ button {
   border-radius: 30px;
   padding: 10px 19px;
   align-self: center;
+  &:hover {
+    color: #FFFFFF;
+    background-color: #070707;
+  }
 }
 
 hr {
@@ -76,5 +80,69 @@ hr {
   }
   @media screen and (min-width:376px) {
     display: none;
+  }
+}
+
+.checkbox {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 3px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  &:checked {
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &--blue {
+    border-color: #2176FF;
+    &:checked {
+      background-image: url(/img/icons/checked_blue.svg);
+    }
+  }
+  &--light-blue {
+    border-color: #33A1FD;
+    &:checked {
+      background-image: url(/img/icons/checked_light-blue.svg);
+    }
+  }
+  &--light-orange {
+    border-color: #FDCA40;
+    &:checked {
+      background-image: url(/img/icons/checked_light-orange.svg);
+    }
+  }
+  &--marine {
+    border-color: #57E2E5;
+    &:checked {
+      background-image: url(/img/icons/checked_marine.svg);
+    }
+  }
+  &--orange {
+    border-color: #F79824;
+    &:checked {
+      background-image: url(/img/icons/checked_orange.svg);
+    }
+  }
+  &--pink {
+    border-color: #E08DAC;
+    &:checked {
+      background-image: url(/img/icons/checked_pink.svg);
+    }
+  }
+  &--violet {
+    border-color: #6A7FDB;
+    &:checked {
+      background-image: url(/img/icons/checked_violet.svg);
+    }
+  }
+  &--green {
+    border-color: #45CB85;
+    &:checked {
+      background-image: url(/img/icons/checked_green.svg);
+    }
+  }
+  &--black:checked {
+    background-image: url(/img/icons/checked.svg);
   }
 }
