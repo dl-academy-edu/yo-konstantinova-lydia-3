@@ -79,19 +79,21 @@ closeRegisterModal.addEventListener("click", function() {
 
 checkbox.addEventListener("click", function() {
     if (checkbox.checked) {
-        formBtn.removeAttribute("disabled");
+        formBtn.removeAttribute("disabled", "disabled");
         checkboxLabel.classList.remove("modal__form__checkbox-wrap__label-disabled");
     } else {
-        formBtn.setAttribute("diasbled");
+        formBtn.setAttribute("disabled", "disabled");
+        checkboxLabel.classList.add("modal__form__checkbox-wrap__label-disabled");
     }
 });
 
 checkboxMessage.addEventListener("click", function() {
     if (checkboxMessage.checked) {
-        formBtnMessage.removeAttribute("disabled");
+        formBtnMessage.removeAttribute("disabled", "disabled");
         checkboxLabelMessage.classList.remove("modal__form__checkbox-wrap__label-disabled");
     } else {
-        formBtnMessage.setAttribute("diasbled");
+        formBtnMessage.setAttribute("disabled", "disabled");
+        checkboxLabelMessage.classList.add("modal__form__checkbox-wrap__label-disabled");
     }
 });
 
@@ -104,39 +106,3 @@ closeMessageModal.addEventListener("click", function() {
     messageModal.classList.remove("modal");
     messageModal.classList.add("hidden");
 });
-
-// валидация форм
-
-// (function() {
-//     const signInForm = document.forms.signIn;
-//     const email = signIn.querySelector("input[type=email]");
-//     const password = signIn.querySelector("input[type=password");
-
-//     signInForm.addEventListener("submit", (event) => {
-//         event.preventDefault();
-//         if (isEmailCorrect(email.value)) {
-//             const data = {
-//                 email: email.value,
-//                 password: password.value,
-//             };
-//             console.log(data);
-//         } else {
-//             const errorCreator = (message) => {
-//                 let messageErrorContainer = document.createElement("div");
-//                 messageErrorContainer.classList.add("invalid-message--email");
-//                 messageErrorContainer.innerText = message;
-//                 return messageErrorContainer;
-//             }
-//             const insertAfterElement = document.getElementById("sign-in-email");
-//             insertAfterElement.insertAdjacentElement("afterend", errorCreator('Please enter a valid email address (your entry is not in the format "somebody@example.com")'));
-//         }
-//     })
-// })();
-
-// function isEmailCorrect(email) {
-//     return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
-// }
-
-// function isPhoneCorrect(phone) {
-//     return phone.match(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/);
-// }

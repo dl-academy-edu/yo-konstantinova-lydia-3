@@ -39,6 +39,9 @@
             &--invalid {
                 border-color: #EB3617;
             }
+            &--valid {
+                border-color: #03BC3C;
+            }
             &:hover {
                 border: 2.5px solid #828282;
             }
