@@ -187,6 +187,7 @@
       height: 42px;
       border: none;
       background-color: transparent;
+      cursor: pointer;
     }
     &__list {
       display: flex;
@@ -197,7 +198,6 @@
 
 .heading-section__slider__controls {
   &__arrow {
-    cursor: pointer;
     &--left {
       background-image: url(/img/icons/arrow_left.svg);
       &:hover {
@@ -552,6 +552,19 @@
     align-items: center;
     column-gap: 12px;
   }
+}
+
+.blog__pagination {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog__card {
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
 }
 
 // profile styles

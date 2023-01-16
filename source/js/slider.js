@@ -36,6 +36,7 @@ function createDot (index) {
 
     dot.addEventListener("click", () => {
         setActiveSlide(index);
+        localStorage.setItem("activeSlide", activeSlideIndex);
     })
 
     return dot;
@@ -72,7 +73,7 @@ function setActiveSlide (index, withAnimation = true) {
 }
 
 initialWidth();
-setActiveSlide(0);
+// setActiveSlide(0);
 
 function initialWidth () {
     slideWidth = wrapper.offsetWidth;
@@ -83,8 +84,20 @@ function initialWidth () {
 
 buttonNext.addEventListener("click", () => {
     setActiveSlide(activeSlideIndex + 1);
+    localStorage.setItem("activeSlide", activeSlideIndex);
 })
 
 buttonBack.addEventListener("click", () => {
     setActiveSlide(activeSlideIndex - 1);
+        localStorage.setItem("activeSlide", activeSlideIndex);
 })
+
+// несброс слайдера
+
+let activeSlide;
+
+(() => {
+    +localStorage.getItem("activeSlide") 
+        ? (setActiveSlide(+localStorage.getItem("activeSlide")))
+        : (setActiveSlide(0));
+})();
