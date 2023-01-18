@@ -1,17 +1,15 @@
-// РЕАЛИЗАЦИЯ ПОСТОВ (не работает фильтрация кроме сорт)
+// РЕАЛИЗАЦИЯ ПОСТОВ (из фильтров работают теги, просмотры, сорт)
 
 const SERVER_URL = "https://academy.directlinedev.com";
 const filterForm = document.forms.filter;
 
 const mainLoader = document.querySelector(".preloader--js");
 let loaderCount = 0;
-
 const showLoader = () => {
     loaderCount++;
     mainLoader.classList.remove("hidden");
     mainLoader.classList.add("not-hidden");
 }
-
 const hideLoader = () => {
     loaderCount--;
     if (loaderCount <= 0) {
@@ -20,45 +18,22 @@ const hideLoader = () => {
         loaderCount = 0;
     }
 }
-
-console.log(mainLoader);
 (function() {
     filterForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
         let data = {};
 
-        // data.tags = [];
-
-        data.tags = [...filterForm.elements.tags]
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-
+        data.tags = [...filterForm.elements.tags].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
         data.views = ([...filterForm.elements.views].find(radio => radio.checked) || {value: null}).value;
-        data.comments = [];
+        data.comments = [...filterForm.elements.comments].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
         data.sort = ([...filterForm.elements.sort].find(radio => radio.checked) || {value: null}).value;
         data.howShow = ([...filterForm.elements.howShow].find(radio => radio.checked) || {value: null}).value;
 
         getData(data);
         setSearchParams(data);
 
-        // (() => {
-        //     let checkboxesTags = [...filterForm.elements.tags];
-        //     for (checkbox of checkboxesTags) {
-        //         if (checkbox.checked) {
-        //             data.tags.push(checkbox.value);
-        //         }
-        //     }
-        // })();
-
-        (() => {
-            let checkboxesComments = [...filterForm.elements.comments];
-            for (checkbox of checkboxesComments) {
-                if (checkbox.checked) {
-                    data.comments.push(checkbox.value);
-                }
-            }
-        })();
+        console.log(data);
     })
 
     let xhr = new XMLHttpRequest();
@@ -84,7 +59,7 @@ function getParamsFromLocation() {
     let searchParams = new URLSearchParams(location.search);
     return {
         tags: searchParams.getAll("tags"),
-        views: searchParams.get("view"),
+        views: searchParams.get("views"),
         comments: searchParams.getAll("comments"),
         sort: searchParams.get("sort"),
         howShow: searchParams.get("howShow"),
@@ -99,9 +74,19 @@ function setSearchParams(data) {
     if(data.sort) {
         searchParams.set("sort", data.sort);
     }
+    if(data.views) {
+        searchParams.set("views", data.views);
+    }
+    data.comments.forEach(comment => {
+        searchParams.append("comments", comment);
+    });
+    if(data.howShow) {
+        searchParams.set("howShow", data.howShow);
+    }
     history.replaceState(null, document.title, "?" + searchParams.toString());
 }
 
+//toDo добавить comments + howShow
 function getData(params) {
     const result = document.querySelector(".blog__filter-section__posts--js");
     let xhr = new XMLHttpRequest();
@@ -111,13 +96,14 @@ function getData(params) {
     if(params.tags && Array.isArray(params.tags) && params.tags.length) {
         searchParams.set("tags", JSON.stringify(params.tags));
     }
-    // let filter = {};
 
-    // if (params.name) {
-    //     filter.title = params.name;
-    // }
-
-    // searchParams.set("filter", JSON.stringify(filter));
+    let filter = {};
+    if(params.views) {
+        let minViews = params.views.split("-")[0];
+        let maxViews = params.views.split("-")[1];
+        filter.views = {"views" :{"$between": [minViews, maxViews]}};
+        searchParams.set("filter", JSON.stringify(filter.views))
+    }
 
     if(params.sort) {
         searchParams.set("sort", JSON.stringify([params.sort, "DESC"]));
@@ -135,6 +121,9 @@ function getData(params) {
                 text: post.text,
                 src: post.photo.desktopPhotoUrl,
                 tags: post.tags,
+                date: post.date,
+                views: post.views,
+                commentsCount: post.commentsCount,
             })
             result.insertAdjacentHTML("beforeend", card)
         })
@@ -142,14 +131,33 @@ function getData(params) {
     }
 }
 
-function cardCreate ({title, text, src, tags}) {
+
+function cardCreate ({title, text, src, tags, commentsCount, date, views}) {  
+
+date = new Date(date);
+let year = date.getFullYear();
+let month = date.getMonth() + 1;
+let day = date.getDate();
+  
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (day < 10) {
+    day = '0' + day;
+  }
+
+const finalDate = `${day}.${month}.${year}`;
+
     return `
         <div class="blog__card">
             <img src="${SERVER_URL}${src}" class="blog__card__img" alt="${title}">
             <div class="blog__card__body">
+                ${tags.map(tag => `<span style="color: ${tag.color}">${tag.name}</span>`).join("<br>")}
+                <span>${finalDate}</span>
+                <span>${views} views</span>
+                <span>${commentsCount} comments</span>
                 <h5>${title}</h5>
                 <p class="blog__card__text">${text}</p>
-                ${tags.map(tag => `<span style="color: ${tag.color}">${tag.name}</span>`).join("<br>")}
             </div>
         </div>
         <hr>
@@ -163,13 +171,22 @@ function setDataToFilter (data) {
     filterForm.elements.sort.forEach(radio => {
         radio.checked = data.sort === radio.value;
     });
+    filterForm.elements.views.forEach(radio => {
+        radio.checked = data.views === radio.value;
+    });
+    filterForm.elements.comments.forEach(checkbox => {
+        checkbox.checked = data.comments.includes(checkbox.value);
+    });
+    filterForm.elements.howShow.forEach(radio => {
+        radio.checked = data.howShow === radio.value;
+    });
 }
 
 
 function createTag({id, color}) {
     return `
     <label for="${id}">
-        <input type="checkbox" style="color: ${color};" class="checkbox" id="${id}" value="blue" name="tags">
+        <input type="checkbox" style="color: ${color};" class="checkbox" id="${id}" value="${id}" name="tags">
     </label>
     `
 }

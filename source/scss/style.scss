@@ -446,6 +446,13 @@
 
 // blog styles
 
+.blog__filter-section__filters-wrap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 48px;
+}
+
 .blog {
   &__title {
     margin: 40px 0;
@@ -457,10 +464,9 @@
   }
   &__filter-section {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 48px;
+    flex-wrap: wrap;
     margin-bottom: 35px;
+    row-gap: 35px;
     @media screen and (max-width: 768px) {
       flex-wrap: wrap;
       row-gap: 30px;
@@ -475,6 +481,7 @@
       display: flex;
       gap: 30px;
       margin-bottom: 20px;
+      width: 100%;
       &>input {
         width: 100%;
         border: 2.5px solid #E5E5E5;
