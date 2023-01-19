@@ -446,6 +446,22 @@
 
 // blog styles
 
+.blog__list__pagination__links {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+  &>a {
+    font-weight: 700;
+  }
+}
+
+.blog__pagination__link {
+  color: #E5E5E5;
+  &--active {
+    color: #070707;
+  }
+}
+
 .blog__filter-section__filters-wrap {
   display: flex;
   width: 100%;

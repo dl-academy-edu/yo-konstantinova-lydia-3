@@ -1,10 +1,9 @@
-// РЕАЛИЗАЦИЯ ПОСТОВ (из фильтров работают теги, просмотры, сорт)
+// РЕАЛИЗАЦИЯ ПОСТОВ (фильтрация done. to do: стилизация карточек блога + как изменить цвет свг галочек в чекбоксах???)
 
 const SERVER_URL = "https://academy.directlinedev.com";
 const filterForm = document.forms.filter;
-
+const LIMIT = 5;
 const mainLoader = document.querySelector(".preloader--js");
-let loaderCount = 0;
 const showLoader = () => {
     loaderCount++;
     mainLoader.classList.remove("hidden");
@@ -18,11 +17,16 @@ const hideLoader = () => {
         loaderCount = 0;
     }
 }
+
+let loaderCount = 0;
+
 (function() {
     filterForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        let data = {};
+        let data = {
+            page: 0,
+        };
 
         data.tags = [...filterForm.elements.tags].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
         data.views = ([...filterForm.elements.views].find(radio => radio.checked) || {value: null}).value;
@@ -33,7 +37,7 @@ const hideLoader = () => {
         getData(data);
         setSearchParams(data);
 
-        console.log(data);
+        console.log(data.howShow);
     })
 
     let xhr = new XMLHttpRequest();
@@ -63,11 +67,17 @@ function getParamsFromLocation() {
         comments: searchParams.getAll("comments"),
         sort: searchParams.get("sort"),
         howShow: searchParams.get("howShow"),
+        page: +searchParams.get("page") || 0,
     }
 }
 
 function setSearchParams(data) {
     let searchParams = new URLSearchParams();
+    if(data.page) {
+        searchParams.set("page", data.page)
+    } else { 
+        searchParams.set("page", 0);
+    }
     data.tags.forEach(tag => {
         searchParams.append("tags", tag);
     });
@@ -86,7 +96,7 @@ function setSearchParams(data) {
     history.replaceState(null, document.title, "?" + searchParams.toString());
 }
 
-//toDo добавить comments + howShow
+//toDo добавить howShow
 function getData(params) {
     const result = document.querySelector(".blog__filter-section__posts--js");
     let xhr = new XMLHttpRequest();
@@ -101,8 +111,47 @@ function getData(params) {
     if(params.views) {
         let minViews = params.views.split("-")[0];
         let maxViews = params.views.split("-")[1];
-        filter.views = {"views" :{"$between": [minViews, maxViews]}};
-        searchParams.set("filter", JSON.stringify(filter.views))
+
+        filter.views = {
+            "$between": [minViews, maxViews]
+        };
+    }
+    if(params.comments && params.comments.length) {
+        let minComments;
+        let maxComments;
+        switch(params.comments.length > 1) {
+            case `${[filterForm.elements.comments].length}`: {
+                minComments = params.comments[0];
+                maxComments = params.comments[params.comments-1];
+                break;
+            }
+            default: {
+                minComments = params.comments[0].split("-")[0]; //[0] || [0-1]
+                maxComments = params.comments[params.comments.length-1].split("-")[1];
+                break;
+            }
+        }
+
+        if(params.comments.length === 1 && params.comments[0] === "0") {
+            minComments = 0;
+            maxComments = 0;
+        }
+
+        filter.commentsCount = {
+                "$between": [minComments, maxComments],
+            }
+
+        }
+        searchParams.set("filter", JSON.stringify(filter));
+
+    if(params.howShow === "show-10") {
+        searchParams.set("limit", 10)
+    } else {
+        searchParams.set("limit", LIMIT);
+    }
+
+    if(+params.page) {
+        searchParams.set("offset", (+params.page )* LIMIT);
     }
 
     if(params.sort) {
@@ -113,10 +162,13 @@ function getData(params) {
     xhr.send();
     showLoader();
     result.innerHTML = "";
+    const links = document.querySelector(".blog__pagination--js");
+    links.innerHTML = "";
     xhr.onload = () => {
         const response = JSON.parse(xhr.response);
+        let dataPosts = "";
         response.data.forEach(post => {
-            const card = cardCreate({
+            dataPosts += cardCreate({
                 title: post.title, 
                 text: post.text,
                 src: post.photo.desktopPhotoUrl,
@@ -124,13 +176,46 @@ function getData(params) {
                 date: post.date,
                 views: post.views,
                 commentsCount: post.commentsCount,
-            })
-            result.insertAdjacentHTML("beforeend", card)
+            });
         })
+        result.innerHTML = dataPosts;
+
+        const pageCount = Math.ceil(response.count / LIMIT);
+        for (let i = 0; i < pageCount; i++) {
+            const link = linkElementCreate(i);
+            links.insertAdjacentElement("beforeend", link);
+            links.insertAdjacentHTML("beforeend", "");
+        }
         hideLoader();
     }
 }
 
+function linkElementCreate(page) {
+    const link = document.createElement("a");
+    link.href = "?page=" + page;
+    link.innerText = page + 1;
+    link.classList.add("blog__pagination__link"); //стили пагинации
+
+    let params = getParamsFromLocation();
+    if (page === +params.page) {
+        link.classList.add("blog__pagination__link--active");
+    }
+
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const links = document.querySelectorAll(".blog__pagination__link");
+        let searchParams = new URLSearchParams(location.search);
+        let params = getParamsFromLocation();
+        links[params.page].classList.remove("blog__pagination__link--active");
+        searchParams.set("page", page);
+        links[page].classList.add("blog__pagination__link--active");
+        history.replaceState(null, document.title, "?" + searchParams.toString());
+        getData(getParamsFromLocation());
+    })
+
+    return link;
+}
 
 function cardCreate ({title, text, src, tags, commentsCount, date, views}) {  
 
@@ -190,12 +275,6 @@ function createTag({id, color}) {
     </label>
     `
 }
-
-
-
-
-
-
 
 
 //НЕСБРОС ФИЛЬТРОВ//
