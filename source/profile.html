@@ -51,14 +51,17 @@
                         <span>23</span>
                     </div>
                     <div class="profile__info__btn-wrap">
-                        <button type="button" class="btn">Change password</button>
-                        <button type="button" class="btn">Change other data</button>
+                        <button type="button" class="btn password-btn-js">Change password</button>
+                        <button type="button" class="btn data-btn-js">Change other data</button>
                         <button type="button" class="btn">Delete account</button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    @@include('blocks/change_password.html')
+    @@include('blocks/change_data.html')
     <script src="js/index.js"></script>
+    <script src="js/changeData.js"></script>
 </body>
 </html>

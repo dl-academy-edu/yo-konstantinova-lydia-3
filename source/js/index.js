@@ -46,6 +46,8 @@ window.addEventListener("keydown", function(e) {
         registerModal.classList.add("hidden");
         messageModal.classList.remove("modal");
         messageModal.classList.add("hidden");
+        changePasswordModal.classList.remove("modal");
+        changePasswordModal.classList.add("hidden");
     }
 });
 

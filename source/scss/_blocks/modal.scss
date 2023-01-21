@@ -22,11 +22,14 @@
         border: 3px solid #070707;
         padding: 40px;
         background-color: #FFFFFF;
-        &--register {
+        &--register, &--change-data {
             max-width: 680px;
             flex-direction: unset;
             flex-wrap: wrap;
             justify-content: space-between;
+        }
+        &__btn-wrap {
+            width: 100%;
         }
         &__label {
             margin-bottom: 6px;
@@ -51,32 +54,54 @@
             &--email {
                 width: 100%;
             }
+            &--file {
+                opacity: 0;
+            }
         }
         &__btn {
             margin-top: 10px;
             color: #070707;
             font-weight: 700;
+            font-size: 18px;
             display: inline-block;
             border: 2.5px solid #070707;
             border-radius: 30px;
             padding: 10px 19px;
-            width: 88px;
+            width: max-content;
             background-color: transparent;
-            &--register {
-                width: 109px;
-                font-size: 18px;
-                &:disabled {
-                    color: #E5E5E5;
-                    border-color: #E5E5E5;
-                    cursor: no-drop;
-                }
-            }
+            &:hover {
+                color: #FFFFFF;
+                background-color: #070707;
+              }
+              &:disabled {
+                  color: #E5E5E5;
+                  border-color: #E5E5E5;
+                  cursor: no-drop;
+              }
         }
         &__input-wrap {
             display: flex;
             flex-direction: column;
             &--register-email{
                 width: 100%;
+            }
+            &--file>label {
+                position: relative;
+                &::after {
+                    background-image: url(/img/icons/file_upload.svg);
+                    background-repeat: no-repeat;
+                    background-position: 16px 16px;
+                    content: "Choose a file...";
+                    position: absolute;
+                    top: 25px;
+                    left: 0;
+                    width: 290px;
+                    height: 50px;
+                    border: 2.5px solid #E5E5E5;
+                    padding: 16px 40px;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
             }
             &>label {
                 margin-bottom: 6px;
