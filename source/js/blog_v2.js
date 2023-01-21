@@ -3,6 +3,8 @@
 const SERVER_URL = "https://academy.directlinedev.com";
 const filterForm = document.forms.filter;
 const LIMIT = 5;
+const paginationBtnPrev = document.querySelector(".blog__pagination__btn__prev--js");
+const paginationBtnNext = document.querySelector(".blog__pagination__btn__next--js");
 const mainLoader = document.querySelector(".preloader--js");
 const showLoader = () => {
     loaderCount++;
@@ -162,8 +164,8 @@ function getData(params) {
     xhr.send();
     showLoader();
     result.innerHTML = "";
-    const links = document.querySelector(".blog__pagination--js");
-    links.innerHTML = "";
+    const linksContainer = document.querySelector(".blog__pagination--js");
+    linksContainer.innerHTML = "";
     xhr.onload = () => {
         const response = JSON.parse(xhr.response);
         let dataPosts = "";
@@ -172,6 +174,7 @@ function getData(params) {
                 title: post.title, 
                 text: post.text,
                 src: post.photo.desktopPhotoUrl,
+                srcMob: post.photo.mobilePhotoUrl,
                 tags: post.tags,
                 date: post.date,
                 views: post.views,
@@ -183,9 +186,10 @@ function getData(params) {
         const pageCount = Math.ceil(response.count / LIMIT);
         for (let i = 0; i < pageCount; i++) {
             const link = linkElementCreate(i);
-            links.insertAdjacentElement("beforeend", link);
-            links.insertAdjacentHTML("beforeend", "");
+            linksContainer.insertAdjacentElement("beforeend", link);
+            linksContainer.insertAdjacentHTML("beforeend", "");
         }
+
         hideLoader();
     }
 }
@@ -200,11 +204,13 @@ function linkElementCreate(page) {
     if (page === +params.page) {
         link.classList.add("blog__pagination__link--active");
     }
-
+    
     link.addEventListener("click", (e) => {
         e.preventDefault();
-
+        
         const links = document.querySelectorAll(".blog__pagination__link");
+        paginationBtnPrev.removeAttribute("disabled", "disabled");
+        paginationBtnNext.removeAttribute("disabled", "disabled");
         let searchParams = new URLSearchParams(location.search);
         let params = getParamsFromLocation();
         links[params.page].classList.remove("blog__pagination__link--active");
@@ -212,12 +218,18 @@ function linkElementCreate(page) {
         links[page].classList.add("blog__pagination__link--active");
         history.replaceState(null, document.title, "?" + searchParams.toString());
         getData(getParamsFromLocation());
+        if(page === 0) {
+            paginationBtnPrev.setAttribute("disabled", "disabled");
+        }
+        if(page === links.length - 1) {
+            paginationBtnNext.setAttribute("disabled", "disabled");
+        }
     })
 
     return link;
 }
 
-function cardCreate ({title, text, src, tags, commentsCount, date, views}) {  
+function cardCreate ({title, text, src, srcMob, tags, commentsCount, date, views}) {  
 
 date = new Date(date);
 let year = date.getFullYear();
@@ -233,16 +245,24 @@ let day = date.getDate();
 
 const finalDate = `${day}.${month}.${year}`;
 
+console.log(tags);
+
     return `
         <div class="blog__card">
+        <picture>
+            <source media="(max-width:376px)" srcset="${SERVER_URL}${srcMob}" alt="${title}">
             <img src="${SERVER_URL}${src}" class="blog__card__img" alt="${title}">
+        </picture>
             <div class="blog__card__body">
-                ${tags.map(tag => `<span style="color: ${tag.color}">${tag.name}</span>`).join("<br>")}
-                <span>${finalDate}</span>
-                <span>${views} views</span>
-                <span>${commentsCount} comments</span>
-                <h5>${title}</h5>
+                ${tags.map(tag => `<div class="blog__card__tag-color" style="background-color: ${tag.color}"></div>`).join("")}
+                <div class="blog__card__info-wrap">
+                    <span>${finalDate}</span>
+                    <span>${views} views</span>
+                    <span>${commentsCount} comments</span>
+                </div>
+                <h5 class="blog__card__title">${title}</h5>
                 <p class="blog__card__text">${text}</p>
+                <a href="#" class="blog__card__link">Go to this post</a>
             </div>
         </div>
         <hr>
@@ -276,6 +296,41 @@ function createTag({id, color}) {
     `
 }
 
+paginationBtnNext.addEventListener("click", (e) => {
+    const links = document.querySelectorAll(".blog__pagination__link");
+    let searchParams = new URLSearchParams(location.search);
+    let params = getParamsFromLocation();
+    if(params.page === 0) {
+        paginationBtnPrev.removeAttribute("disabled", "disabled");
+    } else if (params.page === (links.length) - 2) {
+        paginationBtnNext.setAttribute("disabled", "disabled");
+    }
+    links[params.page].classList.remove("blog__pagination__link--active");
+    let nextPage = params.page + 1;
+    searchParams.set("page", nextPage);
+    links[nextPage].classList.add("blog__pagination__link--active");
+    history.replaceState(null, document.title, "?" + searchParams.toString());
+    getData(getParamsFromLocation());
+})
+
+
+paginationBtnPrev.addEventListener("click", (e) => {
+    const links = document.querySelectorAll(".blog__pagination__link");
+    let searchParams = new URLSearchParams(location.search);
+    let params = getParamsFromLocation();
+    links[params.page].classList.remove("blog__pagination__link--active");
+    let prevPage = params.page - 1;
+    let nextPage = params.page + 1;
+    if(nextPage <= 1 || prevPage === 0) {
+        paginationBtnPrev.setAttribute("disabled", "disabled");
+    } else if (params.page === links.length - 1) {
+        paginationBtnNext.removeAttribute("disabled", "disabled");
+    }
+    searchParams.set("page", prevPage);
+    links[prevPage].classList.add("blog__pagination__link--active");
+    history.replaceState(null, document.title, "?" + searchParams.toString());
+    getData(getParamsFromLocation());
+})
 
 //НЕСБРОС ФИЛЬТРОВ//
 
