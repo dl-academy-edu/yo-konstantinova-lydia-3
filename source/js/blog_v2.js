@@ -5,22 +5,6 @@ const filterForm = document.forms.filter;
 const LIMIT = 5;
 const paginationBtnPrev = document.querySelector(".blog__pagination__btn__prev--js");
 const paginationBtnNext = document.querySelector(".blog__pagination__btn__next--js");
-const mainLoader = document.querySelector(".preloader--js");
-const showLoader = () => {
-    loaderCount++;
-    mainLoader.classList.remove("hidden");
-    mainLoader.classList.add("not-hidden");
-}
-const hideLoader = () => {
-    loaderCount--;
-    if (loaderCount <= 0) {
-        mainLoader.classList.add("hidden");
-        mainLoader.classList.remove("not-hidden");
-        loaderCount = 0;
-    }
-}
-
-let loaderCount = 0;
 
 (function() {
     filterForm.addEventListener("submit", (e) => {

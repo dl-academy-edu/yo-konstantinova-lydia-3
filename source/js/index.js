@@ -1,3 +1,20 @@
+const mainLoader = document.querySelector(".preloader--js");
+const showLoader = () => {
+    loaderCount++;
+    mainLoader.classList.remove("hidden");
+    mainLoader.classList.add("not-hidden");
+}
+const hideLoader = () => {
+    loaderCount--;
+    if (loaderCount <= 0) {
+        mainLoader.classList.add("hidden");
+        mainLoader.classList.remove("not-hidden");
+        loaderCount = 0;
+    }
+}
+
+let loaderCount = 0;
+
 let openMenu = document.querySelector(".header-mob-js");
 let openMenuBtn = document.querySelector(".heading-section__menu-btn");
 let closeMenu = document.querySelector(".header-mob__close-btn");
