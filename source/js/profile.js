@@ -1,4 +1,3 @@
-// const openChangePasswordModal = document.forms.changePassword;
 const changePasswordModal = document.querySelector(".change-password-modal-js");
 const passwordBtn = document.querySelector(".password-btn-js");
 const closeChangePasswordModal = document.querySelectorAll(".modal__close-btn")[2];

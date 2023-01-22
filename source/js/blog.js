@@ -1,4 +1,4 @@
-// РЕАЛИЗАЦИЯ ПОСТОВ (фильтрация done. to do: стилизация карточек блога + как изменить цвет свг галочек в чекбоксах???)
+// РЕАЛИЗАЦИЯ ПОСТОВ 
 
 const SERVER_URL = "https://academy.directlinedev.com";
 const filterForm = document.forms.filter;
@@ -82,7 +82,6 @@ function setSearchParams(data) {
     history.replaceState(null, document.title, "?" + searchParams.toString());
 }
 
-//toDo добавить howShow
 function getData(params) {
     const result = document.querySelector(".blog__filter-section__posts--js");
     let xhr = new XMLHttpRequest();

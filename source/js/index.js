@@ -1,4 +1,6 @@
+//прелоадер
 const mainLoader = document.querySelector(".preloader--js");
+
 const showLoader = () => {
     loaderCount++;
     mainLoader.classList.remove("hidden");
@@ -15,58 +17,8 @@ const hideLoader = () => {
 
 let loaderCount = 0;
 
-let openMenu = document.querySelector(".header-mob-js");
-let openMenuBtn = document.querySelector(".heading-section__menu-btn");
-let closeMenu = document.querySelector(".header-mob__close-btn");
-let signInModal = document.querySelector(".sign-in-modal-js");
-let openSignInModal = document.querySelector(".sign-in-modal-btn-js");
-let closeSignInModal = document.querySelectorAll(".modal__close-btn")[0];
-let registerModal = document.querySelector(".register-modal-js");
-let openRegisterModal = document.querySelector(".register_modal-btn-js");
-let closeRegisterModal = document.querySelectorAll(".modal__close-btn")[1];
-let checkbox = document.querySelectorAll(".cb-js")[0];
-let formBtn = document.querySelectorAll(".btn-register-js")[0];
-let checkboxLabel = document.querySelectorAll(".cb-label-js")[0];
-let openMessageModal = document.querySelector(".msg-btn-js");
-let messageModal = document.querySelector(".message-modal-js");
-let closeMessageModal = document.querySelector(".modal__close-btn--msg");
-let checkboxMessage = document.querySelectorAll(".cb-js")[1];
-let formBtnMessage = document.querySelectorAll(".btn-register-js")[1];
-let checkboxLabelMessage = document.querySelectorAll(".cb-label-js")[1];
-let scrollBtn = document.querySelector(".scroll-btn");
-
-
-const openModal = function () {
-    signInModal.classList.remove("hidden");
-    signInModal.classList.add("modal");
-};
-
-const closeModal = function () {
-    signInModal.classList.remove("modal");
-    signInModal.classList.add("hidden");
-};
-
-
-openMenuBtn.addEventListener("click", function() {
-    openMenu.classList.add("header-mob");
-});
-
-closeMenu.addEventListener("click", function() {
-    openMenu.classList.remove("header-mob");
-});
-
-window.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-        signInModal.classList.remove("modal");
-        signInModal.classList.add("hidden");
-        registerModal.classList.remove("modal");
-        registerModal.classList.add("hidden");
-        messageModal.classList.remove("modal");
-        messageModal.classList.add("hidden");
-        changePasswordModal.classList.remove("modal");
-        changePasswordModal.classList.add("hidden");
-    }
-});
+//кнопка скролла
+const scrollBtn = document.querySelector(".scroll-btn");
 
 window.addEventListener("scroll", () => {
     if (window.pageYOffset > 1500) {
@@ -83,45 +35,93 @@ scrollBtn.addEventListener("click", () => {
     })
 });
 
-openSignInModal.addEventListener("click", openModal);
-closeSignInModal.addEventListener("click", closeModal);
-
-openRegisterModal.addEventListener("click", function() {
-    registerModal.classList.remove("hidden");
-    registerModal.classList.add("modal");
-});
-
-closeRegisterModal.addEventListener("click", function() {
-    registerModal.classList.remove("modal");
-    registerModal.classList.add("hidden");
-});
-
-checkbox.addEventListener("click", function() {
-    if (checkbox.checked) {
-        formBtn.removeAttribute("disabled", "disabled");
-        checkboxLabel.classList.remove("modal__form__checkbox-wrap__label-disabled");
-    } else {
-        formBtn.setAttribute("disabled", "disabled");
-        checkboxLabel.classList.add("modal__form__checkbox-wrap__label-disabled");
+//закрытие модалок с помощью escape
+window.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        signInModal.classList.remove("modal");
+        signInModal.classList.add("hidden");
+        registerModal.classList.remove("modal");
+        registerModal.classList.add("hidden");
+        messageModal.classList.remove("modal");
+        messageModal.classList.add("hidden");
+        changePasswordModal.classList.remove("modal");
+        changePasswordModal.classList.add("hidden");
     }
 });
 
-checkboxMessage.addEventListener("click", function() {
-    if (checkboxMessage.checked) {
-        formBtnMessage.removeAttribute("disabled", "disabled");
-        checkboxLabelMessage.classList.remove("modal__form__checkbox-wrap__label-disabled");
+// функции для валидация и обращения к бэку
+
+const errorCreator = (message) => {
+    let messageErrorContainer = document.createElement("div");
+    messageErrorContainer.classList.add("invalid-message");
+    messageErrorContainer.innerText = message;
+    return messageErrorContainer;
+}
+const setErrorText = (input, errorMessage) => {
+    input.classList.remove("modal__form__input--valid");
+    const error = errorCreator(errorMessage);
+    input.classList.add("modal__form__input--invalid");
+    input.insertAdjacentElement("afterend", error);
+    input.addEventListener("input", () => {
+        error.remove();
+        input.classList.remove("modal__form__input--invalid");
+    })
+}
+
+const showValidInput = (input) => {
+    input.classList.add("modal__form__input--valid");
+}
+
+const removeValidInput = (input) => {
+    input.classList.remove("modal__form__input--valid");
+}
+
+const BASE_SERVER_PATH = "https://academy.directlinedev.com"; //ссылка на сервер
+
+function sendRequest({url, method = "GET", headers, body = null}) {
+    return fetch(BASE_SERVER_PATH + url + "?v=0.0.1", {
+        method,
+        headers, 
+        body,
+    });
+}
+
+function errorFormHandler(errors, form) {
+    Object.keys(errors).forEach((key) => {
+        const messageError = errors[key];
+        const input = form.elements[key];
+        setErrorText(input, messageError);
+    })
+}
+
+//перерисовка хедера 
+
+const isLogin = localStorage.getItem("token");
+
+if(isLogin) rerendeLinks();
+
+function rerendeLinks() {
+    const signInButton = document.querySelector(".sign-in-to-hide--js");
+    const registerButton = document.querySelector(".register-to-hide--js");
+    const profileButton = document.querySelector(".profile-to-show--js");
+    const logOutButton = document.querySelector(".log-out-to-show--js");
+
+    if(isLogin) {
+        signInButton.classList.add("hidden");
+        registerButton.classList.add("hidden");
+        profileButton.classList.remove("hidden");
+        logOutButton.classList.remove("hidden");
     } else {
-        formBtnMessage.setAttribute("disabled", "disabled");
-        checkboxLabelMessage.classList.add("modal__form__checkbox-wrap__label-disabled");
+        signInButton.classList.remove("hidden");
+        registerButton.classList.remove("hidden");
+        profileButton.classList.add("hidden");
+        logOutButton.classList.add("hidden");
     }
-});
+}
 
-openMessageModal.addEventListener("click", function() {
-    messageModal.classList.remove("hidden");
-    messageModal.classList.add("modal");
-});
+//выход из аккаунта:
 
-closeMessageModal.addEventListener("click", function() {
-    messageModal.classList.remove("modal");
-    messageModal.classList.add("hidden");
-});
+logOutButton.addEventListener("click", () => {
+    rerendeLinks();
+    localStorage.removeItem("token");
+})
