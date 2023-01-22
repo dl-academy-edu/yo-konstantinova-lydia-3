@@ -14,6 +14,9 @@ const closeModal = function () {
 
 openSignInModal.addEventListener("click", openModal);
 closeSignInModal.addEventListener("click", closeModal);
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModalByEsc(signInModal);
+});
 
 //валидация формы входа//
 

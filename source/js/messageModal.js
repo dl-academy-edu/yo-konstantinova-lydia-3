@@ -25,6 +25,10 @@ closeMessageModal.addEventListener("click", function() {
     messageModal.classList.add("hidden");
 });
 
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModalByEsc(messageModal);
+});
+
 //валидация формы отправки сообщения
 
 (() => {

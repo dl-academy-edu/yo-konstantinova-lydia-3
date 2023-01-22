@@ -6,6 +6,8 @@ const changeDataModal = document.querySelector(".change-data-modal-js");
 const dataBtn = document.querySelector(".data-btn-js");
 const closeChangeDataModal = document.querySelectorAll(".modal__close-btn")[3];
 
+console.log(dataBtn);
+
 passwordBtn.addEventListener("click", () => {
     changePasswordModal.classList.remove("hidden");
     changePasswordModal.classList.add("modal");

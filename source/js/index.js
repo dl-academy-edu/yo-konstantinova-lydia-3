@@ -36,18 +36,11 @@ scrollBtn.addEventListener("click", () => {
 });
 
 //закрытие модалок с помощью escape
-window.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-        signInModal.classList.remove("modal");
-        signInModal.classList.add("hidden");
-        registerModal.classList.remove("modal");
-        registerModal.classList.add("hidden");
-        messageModal.classList.remove("modal");
-        messageModal.classList.add("hidden");
-        changePasswordModal.classList.remove("modal");
-        changePasswordModal.classList.add("hidden");
-    }
-});
+
+function closeModalByEsc (modal) {
+        modal.classList.remove("modal");
+        modal.classList.add("hidden");
+}
 
 // функции для валидация и обращения к бэку
 
@@ -95,7 +88,7 @@ function errorFormHandler(errors, form) {
 }
 
 //перерисовка хедера 
-
+const logOutButton = document.querySelector(".log-out-to-show--js");
 const isLogin = localStorage.getItem("token");
 
 if(isLogin) rerendeLinks();

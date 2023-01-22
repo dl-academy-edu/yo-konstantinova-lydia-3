@@ -15,6 +15,10 @@ closeRegisterModal.addEventListener("click", function() {
     registerModal.classList.add("hidden");
 });
 
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModalByEsc(registerModal);
+})
+
 checkbox.addEventListener("click", function() {
     if (checkbox.checked) {
         formBtn.removeAttribute("disabled", "disabled");
