@@ -103,7 +103,7 @@ window.addEventListener("keydown", (e) => {
                 )
             .then(response => {
                 if(response.success) {
-                    alert(`Данные успешно отправлены`)
+                    alert(`Sent successfully`)
                     messageForm.reset();
                     Object.keys(data).forEach((key) => {
                         removeValidInput(messageForm.elements[key]);

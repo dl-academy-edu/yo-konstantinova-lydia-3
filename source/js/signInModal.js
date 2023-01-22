@@ -52,6 +52,7 @@ window.addEventListener("keydown", (e) => {
                 password: password.value
             }
             console.log(data);
+            showLoader();
             sendRequest({
                 method: "POST", 
                 url: "/api/users/login",
@@ -62,7 +63,6 @@ window.addEventListener("keydown", (e) => {
             })
             .then(res => res.json())
             .then(res => {
-                console.log("Вы успешно вошли")
                 console.log(res);
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("userId", res.data.userId);
@@ -75,6 +75,9 @@ window.addEventListener("keydown", (e) => {
                 }
                 errorFormHandler(err.errors, signIn);
             })
+            .finally(
+                hideLoader()
+            )
         }
     })
 })();

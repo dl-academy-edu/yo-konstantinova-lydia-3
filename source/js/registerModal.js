@@ -58,7 +58,7 @@ checkbox.addEventListener("click", function() {
         if (password.value.length <= 0) {
             errors.registerPassword = "This field is required";
         } else if (password.value.length > 0 && password.value.length < 4) {
-            errors.registerPassword = "This passward is too short";
+            errors.registerPassword = "This password is too short";
         } else {
             showValidInput(password);
         }
