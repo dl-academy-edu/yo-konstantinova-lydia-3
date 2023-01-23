@@ -70,6 +70,10 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
+            &>li>a {
+                font-size: 34px;
+                line-height: 41px;
+            }
         }
         &__nav__list__link {
             font-size: 34px;
@@ -79,9 +83,6 @@
             &:hover{
                 color: #070707;
             }
-        }
-        &__nav__list__link--main {
-            color: #070707;
         }
     }
 }

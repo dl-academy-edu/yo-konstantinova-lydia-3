@@ -9,3 +9,4 @@ openMenuBtn.addEventListener("click", function() {
 closeMenu.addEventListener("click", function() {
     openMenu.classList.remove("header-mob");
 });
+

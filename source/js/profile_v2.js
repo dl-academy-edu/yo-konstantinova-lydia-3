@@ -58,7 +58,7 @@ window.addEventListener("keydown", (e) => {
     getProfile();
 
     function renderProfile(profile) {
-        profileImg.attributes.src = `url(${BASE_SERVER_PATH + profile.photoUrl})`;
+        profileImg.src = `${BASE_SERVER_PATH + profile.photoUrl}`;
         profileName.innerText = profile.name;
         profileSurname.innerText = profile.surname;
         profileEmail.innerText = profile.email;
@@ -77,14 +77,15 @@ window.addEventListener("keydown", (e) => {
             if (res.success) {
                 profile = res.data;
                 renderProfile(profile);
-                console.log(profileImg.attributes.src);
             } else {
                 location.pathname = "/";
             }
         })
-        .catch(
-            alert("Something went wrong")
-        )
+        .catch(err => {
+            if(err._message) {
+                alert(err._message);
+            }
+        })
         .finally(
             hideLoader()
         )
@@ -104,9 +105,11 @@ window.addEventListener("keydown", (e) => {
         })
         .then(res => {
             if(res.status === 401 || res.status === 403) {
+                showLoader();
                 localStorage.removeItem("token");
                 localStorage.removeItem("userId");
                 location.pathname = "/";
+                hideLoader();
                 return;
             }
             return res.json();
@@ -123,7 +126,6 @@ window.addEventListener("keydown", (e) => {
             if(err._message) {
                 alert(err._message);
             }
-
         })
         .finally(() => {
             changeDataModal.classList.remove("modal");
@@ -143,6 +145,16 @@ changePasswordForm.addEventListener("submit", (e) => {
     const oldPassword = changePasswordForm.elements.oldPassword;
     const newPassword = changePasswordForm.elements.newPassword;
     const repeatNewPassword = changePasswordForm.elements.repeatNewPassword;
+
+    function messageFormCreator (status, text) {
+        changePasswordForm.classList.add("hidden");
+        changePasswordForm.classList.remove("modal__form");
+        const elementToPutMessageIn = document.querySelector(".password-wrap--js");
+        const messageSuccess = `
+        <span class="form-sent-message form-sent-message--${status}">${text}</span>
+        `
+        elementToPutMessageIn.insertAdjacentHTML("afterbegin", messageSuccess);
+    }
 
     if (repeatNewPassword.value !== newPassword.value) {
         errors.repeatNewPassword = "The password doesn't match";
@@ -188,23 +200,25 @@ changePasswordForm.addEventListener("submit", (e) => {
         })
         .then(res => {
             if (res.status === 422) {
-                alert("Your old password is not correct, please try again");
-                changePasswordForm.reset();
-                removeValidInput(changePasswordForm.elements.oldPassword);
-                removeValidInput(changePasswordForm.elements.newPassword);
-                removeValidInput(changePasswordForm.elements.repeatNewPassword);
+                messageFormCreator("error", "Your old password is not correct, please try again");
                 return;
             }
             return res.json();
         })
         .then(res => {
             if (res.success) {
-                alert(`The password was changed successfully`);
+                messageFormCreator("success", "Form has been sent successfully");
             }
         })
-        .catch( 
-            console.log("Something went wrong")
-        )
+        .catch(err => {
+            changePasswordForm.classList.add("hidden");
+            changePasswordForm.classList.remove("modal__form");
+            const elementToPutMessageIn = document.querySelector(".password-wrap--js");
+            const messageSuccess = `
+            <span class="form-sent-message form-sent-message--error">Something went wrong...</span>
+            `
+            elementToPutMessageIn.insertAdjacentHTML("afterbegin", messageSuccess);
+        })
         .finally(() => {
             hideLoader();
         })

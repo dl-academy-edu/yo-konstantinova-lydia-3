@@ -11,10 +11,18 @@
     font-size: 14px;
     line-height: 17px;
     z-index: 999;
+    @media screen and (max-width: 376px) {
+        background-color: #FFFFFF;
+    }
     &__wrap {
         display: flex;
         align-items: flex-start;
         gap: 10px;
+        @media screen and (max-width: 376px) {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
     }
     &__form {
         display: flex;
@@ -22,6 +30,12 @@
         border: 3px solid #070707;
         padding: 40px;
         background-color: #FFFFFF;
+        @media screen and (max-width: 376px) {
+            border: none;
+            width: 100%;
+            padding: 20px;
+            order: 2;
+        }
         &--register, &--change-data {
             max-width: 680px;
             flex-direction: unset;
@@ -39,6 +53,9 @@
             width: 290px;
             height: 50px;
             border: 2.5px solid #E5E5E5;
+            @media screen and (max-width: 376px) {
+                width: 280px;
+            }
             &--invalid {
                 border-color: #EB3617;
             }
@@ -139,11 +156,29 @@
         &:hover  {
             background-image: url(/img/icons/modal_close_hover.svg);
         }
+        @media screen and (max-width: 376px) {
+            order: 1;
+            margin-left: 20px;
+        }
     }
 }
 
 .color-red {
     color: #EB3617;
+}
+
+.form-sent-message {
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    max-width: 219px;
+    text-align: center;
+    &--success {
+        color: #03BC3C;
+    }
+    &--error {
+        color: #EB3617;
+    }
 }
 
 // стили для валидации форм

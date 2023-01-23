@@ -4,6 +4,12 @@ const closeRegisterModal = document.querySelectorAll(".modal__close-btn")[1];
 const checkbox = document.querySelectorAll(".cb-js")[0];
 const formBtn = document.querySelectorAll(".btn-register-js")[0];
 const checkboxLabel = document.querySelectorAll(".cb-label-js")[0];
+const openMobRegister = document.querySelector(".register-mob--js");
+
+openMobRegister.addEventListener("click", (e) => {
+    registerModal.classList.remove("hidden");
+    registerModal.classList.add("modal");
+})
 
 openRegisterModal.addEventListener("click", function() {
     registerModal.classList.remove("hidden");
@@ -133,6 +139,7 @@ checkbox.addEventListener("click", function() {
                     })
                     registerModal.classList.remove("modal");
                     registerModal.classList.add("hidden");
+                    rerendeLinks();
                 } else {
                     throw response;
                 }

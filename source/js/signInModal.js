@@ -1,6 +1,12 @@
 const signInModal = document.querySelector(".sign-in-modal-js");
 const openSignInModal = document.querySelector(".sign-in-modal-btn-js");
 const closeSignInModal = document.querySelectorAll(".modal__close-btn")[0];
+const openSignInMob = document.querySelector(".sign-in-mob--js");
+
+openSignInMob.addEventListener("click", (e) => {
+    e.preventDefault();
+    openModal();
+})
 
 const openModal = function () {
     signInModal.classList.remove("hidden");
@@ -46,12 +52,10 @@ window.addEventListener("keydown", (e) => {
             errorFormHandler(error, signIn);
             return;
         } else {
-            console.log("Submitted");
             const data = {
                 email: email.value,
                 password: password.value
             }
-            console.log(data);
             showLoader();
             sendRequest({
                 method: "POST", 
@@ -63,17 +67,26 @@ window.addEventListener("keydown", (e) => {
             })
             .then(res => res.json())
             .then(res => {
-                console.log(res);
-                localStorage.setItem("token", res.data.token);
-                localStorage.setItem("userId", res.data.userId);
-                rerendeLinks();
-                closeModal();    
+                if(res.success) {
+                    showLoader();
+                    localStorage.setItem("token", res.data.token);
+                    localStorage.setItem("userId", res.data.userId);
+                    rerendeLinks();
+                    closeModal(); 
+                    location.pathname = "/profile.html";
+                    hideLoader();   
+                } else if (res._message) {
+                    showLoader();
+                    let errMessage = res._message;
+                    setErrorText(email, errMessage);
+                    hideLoader();
+                    removeValidInput(password);
+                }
             })
             .catch(err => {
-                if(err._message) {
-                    alert(err._message);
-                }
-                errorFormHandler(err.errors, signIn);
+                if(err.errors) {
+                    alert(err.errors);
+                } else throw new Error("Something went wrong...")
             })
             .finally(
                 hideLoader()

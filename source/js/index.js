@@ -1,3 +1,58 @@
+//перерисовка хедера 
+const logOutButton = document.querySelector(".log-out-to-show--js");
+const isLogin = localStorage.getItem("token");
+
+function rerendeLinks() {
+    const signInButton = document.querySelector(".sign-in-to-hide--js");
+    const registerButton = document.querySelector(".register-to-hide--js");
+    const profileButton = document.querySelector(".profile-to-show--js");
+    const logOutButton = document.querySelector(".log-out-to-show--js");
+
+    if(isLogin) {
+        signInButton.classList.add("hidden");
+        registerButton.classList.add("hidden");
+        profileButton.classList.remove("hidden");
+        logOutButton.classList.remove("hidden");
+    } else {
+        signInButton.classList.remove("hidden");
+        registerButton.classList.remove("hidden");
+        profileButton.classList.add("hidden");
+        logOutButton.classList.add("hidden");
+    }
+}
+
+//выход из аккаунта:
+
+logOutButton.addEventListener("click", () => {
+    showLoader()
+    rerendeLinks();
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    location.pathname = "/";
+    hideLoader();
+})
+
+//функция активных страниц в хедере
+const homeLink = document.querySelector(".home-link--js");
+const blogLink = document.querySelector(".blog-link--js");
+const profileLink = document.querySelector(".profile-link--js");
+
+function setActivePageInHeader (page) {
+    page.classList.add("header__active-page");
+    page.classList.remove("header-mob__nav__list__link");
+}
+
+if (location.pathname === "/index.html") {
+    setActivePageInHeader(homeLink);
+    if (isLogin) rerendeLinks();
+};
+if (location.pathname === "/blog.html") {
+    setActivePageInHeader(blogLink);
+};
+if (location.pathname === "/profile.html") {
+    setActivePageInHeader(profileLink);
+};
+
 //прелоадер
 const mainLoader = document.querySelector(".preloader--js");
 
@@ -86,35 +141,3 @@ function errorFormHandler(errors, form) {
         setErrorText(input, messageError);
     })
 }
-
-//перерисовка хедера 
-const logOutButton = document.querySelector(".log-out-to-show--js");
-const isLogin = localStorage.getItem("token");
-
-if(isLogin) rerendeLinks();
-
-function rerendeLinks() {
-    const signInButton = document.querySelector(".sign-in-to-hide--js");
-    const registerButton = document.querySelector(".register-to-hide--js");
-    const profileButton = document.querySelector(".profile-to-show--js");
-    const logOutButton = document.querySelector(".log-out-to-show--js");
-
-    if(isLogin) {
-        signInButton.classList.add("hidden");
-        registerButton.classList.add("hidden");
-        profileButton.classList.remove("hidden");
-        logOutButton.classList.remove("hidden");
-    } else {
-        signInButton.classList.remove("hidden");
-        registerButton.classList.remove("hidden");
-        profileButton.classList.add("hidden");
-        logOutButton.classList.add("hidden");
-    }
-}
-
-//выход из аккаунта:
-
-logOutButton.addEventListener("click", () => {
-    rerendeLinks();
-    localStorage.removeItem("token");
-})
