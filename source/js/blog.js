@@ -19,11 +19,12 @@ const paginationBtnNext = document.querySelector(".blog__pagination__btn__next--
         data.comments = [...filterForm.elements.comments].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
         data.sort = ([...filterForm.elements.sort].find(radio => radio.checked) || {value: null}).value;
         data.howShow = ([...filterForm.elements.howShow].find(radio => radio.checked) || {value: null}).value;
+        data.name = filterForm.elements.search.value;
+
+        console.log(data.name);
 
         getData(data);
         setSearchParams(data);
-
-        console.log(data.howShow);
     })
 
     let xhr = new XMLHttpRequest();
@@ -54,6 +55,7 @@ function getParamsFromLocation() {
         sort: searchParams.get("sort"),
         howShow: searchParams.get("howShow"),
         page: +searchParams.get("page") || 0,
+        name: searchParams.get("name") || "",
     }
 }
 
@@ -79,6 +81,7 @@ function setSearchParams(data) {
     if(data.howShow) {
         searchParams.set("howShow", data.howShow);
     }
+    searchParams.set("name", data.name);
     history.replaceState(null, document.title, "?" + searchParams.toString());
 }
 
@@ -111,7 +114,7 @@ function getData(params) {
                 break;
             }
             default: {
-                minComments = params.comments[0].split("-")[0]; //[0] || [0-1]
+                minComments = params.comments[0].split("-")[0]; 
                 maxComments = params.comments[params.comments.length-1].split("-")[1];
                 break;
             }
@@ -126,6 +129,9 @@ function getData(params) {
                 "$between": [minComments, maxComments],
             }
 
+        }
+        if(params.name) {
+            filter.title = params.name;
         }
         searchParams.set("filter", JSON.stringify(filter));
 
@@ -228,8 +234,6 @@ let day = date.getDate();
 
 const finalDate = `${day}.${month}.${year}`;
 
-console.log(tags);
-
     return `
         <div class="blog__card">
         <picture>
@@ -268,13 +272,14 @@ function setDataToFilter (data) {
     filterForm.elements.howShow.forEach(radio => {
         radio.checked = data.howShow === radio.value;
     });
+    filterForm.elements.search.value = data.name;
 }
 
 
 function createTag({id, color}) {
     return `
     <label for="${id}">
-        <input type="checkbox" style="color: ${color};" class="checkbox" id="${id}" value="${id}" name="tags">
+        <input aria-label="tag with color ${color}" type="checkbox" style="color: ${color};" class="checkbox" id="${id}" value="${id}" name="tags">
     </label>
     `
 }
