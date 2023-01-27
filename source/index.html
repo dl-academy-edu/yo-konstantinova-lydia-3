@@ -6,6 +6,10 @@
     <meta name="google" content="notranslate">
     <meta name="format-detection" content="telephone=no">
 
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
     <title>DL Academy</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -33,46 +37,53 @@
           <button type="button" class="heading-section__menu-btn"></button>
         </div>
         <div class="heading-section__slider">
-          <ul class="heading-section__slider__list">
-            <li class="heading-section__slider__list__list-item">
-              <picture>
-                <source media="(max-width:376px)"
-                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x"
-                        alt="Photo of Antonina">
+            <div class="slider">
+                <div class="slider__wrapper">
+                  <div class="slider__inner-wrapper">
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x">
                 <source media="(max-width:1023px)"
-                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x"
-                        alt="Photo of Antonina">
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x">
                 <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
-              </picture>
-            </li>
-            <li class="heading-section__slider__list__list-item">
-              <picture></picture>
-            </li>
-            <li class="heading-section__slider__list__list-item">
-              <picture></picture>
-            </li>
-            <li class="heading-section__slider__list__list-item">
-              <picture></picture>
-            </li>
-          </ul>
-          <div class="heading-section__slider__controls">
-            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--left"></button>
-            <ul class="heading-section__slider__controls__list">
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--active">
-                <button type="button"></button>
-              </li>
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
-                <button type="button"></button>
-              </li>
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
-                <button type="button"></button>
-              </li>
-              <li class="heading-section__slider__controls__list__list-item heading-section__slider__controls__list__list-item--disabled">
-                <button type="button"></button>
-              </li>
-            </ul>
-            <button type="button" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--right"></button>
-          </div>
+                      </picture>
+                    </div>
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x">
+                <source media="(max-width:1023px)"
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
+                      </picture>
+                    </div>
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x">
+                <source media="(max-width:1023px)"
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
+                      </picture>
+                    </div>
+                    <div class="slider__slide">
+                      <picture>
+                        <source media="(max-width:376px)"
+                        srcset="/img/images/antonina_mob.jpg, /img/images/antonina_mob_2x.jpg 2x">
+                <source media="(max-width:1023px)"
+                        srcset="/img/images/antonina_tablet.jpg, /img/images/antonina_tablet_2x.jpg 2x">
+                <img src="/img/images/antonina.jpg" alt="Photo of Antonina" class="heading-section__photo">
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__bottom-panel">
+                  <button aria-label="previous slide" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--left slider__button slider__button--back slider__button--back--js"></button>
+                  <div class="slider__pagination slider__pagination--js"></div>
+                  <button aria-label="next slide" class="heading-section__slider__controls__arrow heading-section__slider__controls__arrow--right slider__button slider__button--next slider__button--next--js"></button>
+                </div>
+              </div>
         </div>
       </section>
       <section class="about-me">
@@ -127,58 +138,49 @@
       <section class="portfolio">
         <h2 class="portfolio__title">Portfolio</h2>
         <div class="portfolio__list-wrap container">
-          <ul class="portfolio__list">
-            <li class="portfolio__list__list-item">
-              <picture>
-                <source media="(max-width:768px)"
-                srcset="/img/images/portfolio_slide_1.png"
-                width="768"
-                height="400"
-                alt="Photo of Antonina">
-              <img src="/img/images/portfolio_slide_1.png" alt="DLK site screenshot" class="portfolio__list__img">
-              </picture>
-              <div class="portfolio__list__btn-wrap">
-                <button type="button" class="portfolio__list__btn portfolio__list__btn--left"></button>
-                <button type="button" class="portfolio__list__btn portfolio__list__btn--right"></button>
+          <div class="portfolio__list swiper">
+            <div class="portfolio__list__list-item swiper-wrapper">
+              <div class="swiper-slide">
+                <picture>
+                  <source media="(max-width:376px)"
+                  srcset="/img/images/portfolio_slide_1_mob.png">
+                  <img src="/img/images/portfolio_slide_1.png" alt="DLK site screenshot">
+                </picture>
               </div>
-              <div class="portfolio__list__text-wrap">
-                <p class="portfolio__list__text-wrap__project-name">Learning site for DL Academy courses</p>
-                <p class="portfolio__list__text-wrap__project-desc">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              <div class="swiper-slide">
+                <picture>
+                  <source media="(max-width:376px)"
+                  srcset="/img/images/portfolio_slide_2_mob.png">
+                  <img src="/img/images/portfolio_slide_2.png" alt="DLK site screenshot">
+                </picture>
               </div>
-            </li>
-            <li class="portfolio__list__list-item hidden">
-              <picture></picture>
-              <button type="button"></button>
-              <button type="button"></button>
-              <div>
-                <p>Learning site for DL Academy courses</p>
-                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              <div class="swiper-slide">
+                <picture>
+                  <source media="(max-width:376px)"
+                  srcset="/img/images/portfolio_slide_3_mob.png">
+                  <img src="/img/images/portfolio_slide_3.png" alt="DLK site screenshot">
+                </picture>
               </div>
-            </li>
-            <li class="portfolio__list__list-item hidden">
-              <picture></picture>
-              <button type="button"></button>
-              <button type="button"></button>
-              <div>
-                <p>Learning site for DL Academy courses</p>
-                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
-              </div>
-            </li>
-            <li class="portfolio__list__list-item hidden">
-              <picture></picture>
-              <button type="button"></button>
-              <button type="button"></button>
-              <div>
-                <p>Learning site for DL Academy courses</p>
-                <p>A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
-              </div>
-            </li>
-          </ul>
+            </div>
+            <button aria-label="previous slide" type="button" class="swiper-button-prev"></button>
+            <button aria-label="next slide" type="button" class="swiper-button-next"></button>
+          </div>
+          <div class="portfolio__list__text-wrap">
+            <a href="#" class="portfolio__list__text-wrap__project-name">Learning site for DL Academy courses</a>
+            <p class="portfolio__list__text-wrap__project-desc">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+          </div>
         </div>
       </section>
     </main>
     @@include('blocks/footer.html')
-    @@include('blocks/sign_modal.html')
+    @@include('blocks/scroll_button.html')
+    @@include('blocks/preloader.html')
     <script src="js/index.js"></script>
+    <script src="js/openMenu.js"></script>
+    <script src="js/signInModal.js"></script>
+    <script src="js/registerModal.js"></script>
+    <script src="js/messageModal.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/swiper.js"></script>
   </body>
 </html>

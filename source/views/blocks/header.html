@@ -5,14 +5,17 @@
             <li>
                 <a href="blog.html" class="header__nav__list__list-item @@my-blog-active">My blog</a>
             </li>
-            <li class="@@hide-sign-in">
+            <li class="@@hide-sign-in sign-in-to-hide--js">
                 <button type="button" class="header__nav__list__list-item sign-in-modal-btn-js">Sign in</button>
             </li>
-            <li class="@@hide-register">
-                <button type="button" class="header__nav__list__list-item">Register</button>
+            <li class="@@hide-register register-to-hide--js">
+                <button type="button" class="header__nav__list__list-item register_modal-btn-js">Register</button>
             </li>
-            <li class="@@hide-profile">
+            <li class="@@hide-profile profile-to-show--js">
                 <a href="profile.html" class="header__nav__list__list-item @@my-profile-active">My profile</a>
+            </li>
+            <li class="hidden log-out-to-show--js">
+                <button class="header__nav__list__list-item">Log out</button>
             </li>
         </ul>
     </nav>
@@ -26,20 +29,23 @@
                 <button type="button" class="header-mob__close-btn"></button>
             </li>
             <li>
-                <a href="index.html" class="header-mob__nav__list__link header-mob__nav__list__link--main">Home</a>
+                <a href="index.html" class="header-mob__nav__list__link home-link--js">Home</a>
             </li>
             <li>
-                <a href="blog.html" class="header-mob__nav__list__link">My blog</a>
+                <a href="blog.html" class="header-mob__nav__list__link blog-link--js">My blog</a>
             </li>
             <li class="@@hide-sign-in">
-                <a href="" class="header-mob__nav__list__link">Sign in</a>
+                <button type="button" class="header-mob__nav__list__link sign-in-mob--js">Sign in</button>
             </li>
             <li class="@@hide-register">
-                <a href="" class="header-mob__nav__list__link">Register</a>
+                <button type="button" class="header-mob__nav__list__link register-mob--js">Register</button>
             </li>
             <li class="@@hide-profile">
-                <a href="profile.html" class="header-mob__nav__list__link">My profile</a>
+                <a href="profile.html" class="header-mob__nav__list__link profile-link--js">My profile</a>
             </li>
         </ul>
     </nav>
 </header>
+
+@@include('blocks/sign_modal.html')
+@@include('blocks/register_modal.html')

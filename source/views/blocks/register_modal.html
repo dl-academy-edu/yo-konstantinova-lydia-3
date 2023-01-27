@@ -1,0 +1,40 @@
+<section class="hidden register-modal-js">
+    <div class="modal__wrap">
+        <form action="#" class="modal__form modal__form--register" name="register" novalidate>
+            <div class="modal__form__input-wrap modal__form__input-wrap--register-email">
+                <label for="registerEmail" class="register__label">Email&nbsp;<span class="color-red">*</span></label>
+                <input type="email" name="email" id="registerEmail" class="modal__form__input modal__form__input--email" required>
+            </div>
+            <div class="modal__form__input-wrap">
+                <label for="registerName" class="register__label">Name&nbsp;<span class="color-red">*</span></label>
+                <input type="text" name="name" id="registerName" class="modal__form__input" required>
+            </div>
+            <div class="modal__form__input-wrap">
+                <label for="surname" class="register__label">Surame&nbsp;<span class="color-red">*</span></label>
+                <input type="text" name="surname" id="surname" class="modal__form__input" required>
+            </div>
+            <div class="modal__form__input-wrap">
+                <label for="password" class="register__label">Password&nbsp;<span class="color-red">*</span></label>
+                <input type="password" name="password" id="password" class="modal__form__input" required>
+            </div>
+            <div class="modal__form__input-wrap">
+                <label for="repeatPassword" class="register__label">Repeat password&nbsp;<span class="color-red">*</span></label>
+                <input type="password" name="repeatPassword" id="repeatPassword" class="modal__form__input" required>
+            </div>
+            <div class="modal__form__input-wrap">
+                <label for="location" class="register__label">Location&nbsp;<span class="color-red">*</span></label>
+                <input type="text" name="location" id="location" class="modal__form__input" required>
+            </div>
+            <div class="modal__form__input-wrap">
+                <label for="age" class="register__label">Age&nbsp;<span class="color-red">*</span></label>
+                <input type="number" name="age" id="age" class="modal__form__input" required>
+            </div>
+            <div class="modal__form__checkbox-wrap">
+                <input type="checkbox" name="agreement" id="agreement" class="checkbox checkbox--black cb-js">
+                <label for="agreement" class="modal__form__checkbox-wrap__label-disabled cb-label-js">Clicking on the button, you consent to the processing of your personal data.</label>
+            </div>
+            <button type="submit" class="modal__form__btn btn-register-js" disabled>Sign up</button>
+        </form>
+        <button type="button" class="modal__close-btn"></button>
+    </div>
+</section>

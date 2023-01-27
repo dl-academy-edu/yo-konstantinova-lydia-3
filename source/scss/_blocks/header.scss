@@ -10,6 +10,9 @@
             &__list-item {
                 color: #828282;
                 font-weight: 700;
+                &:hover{
+                    color: #070707;
+                }
             }
         }
         &__main-anchor {
@@ -67,15 +70,19 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
+            &>li>a {
+                font-size: 34px;
+                line-height: 41px;
+            }
         }
         &__nav__list__link {
             font-size: 34px;
             line-height: 41px;
             font-weight: 700;
             color: #828282;
-        }
-        &__nav__list__link--main {
-            color: #070707;
+            &:hover{
+                color: #070707;
+            }
         }
     }
 }
